@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+}
+div h1{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 10px;
+}
+section{
+    margin: auto;
+    margin-top: 125px;
+}
+.cedu{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+    margin-left: 5px;
+}
+.nom{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+}
+.cedula{
+    width: 30%;
+    border-radius: 5px;
+    padding: 5px;
+    background: #ccccffce;
+    margin-left: 5px;
+    margin-right: 20px;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+}
+.nombres{
+    width: 35%;
+    border-radius: 5px;
+    padding: 5px;
+    background: #ccccffce;
+    margin-left: 5px;
+    margin-right: 20px;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+}
+.buscar{
+    width: 30%;
+    border-radius: 5px;
+    padding: 5px;
+    background: #ccccffce;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+}
+.bus{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px; 
+    margin-left: 90px;
+}
+
+.caja{
+    width: 600px;
+    height: 450px;
+    background: rgba(137, 43, 226, 0.541);
+    border-radius: 5px;
+    padding: 20px;
+    padding-top: 5px;
+    margin-top: 70px;
+}
+
+.boton{
+    width: 20%;
+    background: rgba(22, 220, 255, 0.281);
+    padding: 5px;
+    border: 2px solid rgb(19, 179, 228);
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+.boton:hover{
+    width: 20%;
+    background: rgba(128, 128, 128, 0.521);
+    padding: 5px;
+    border: 2px solid rgba(128, 128, 128, 0.911);
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(94, 21, 163);
+}
+.tabla{
+    width: 100%;
+    background-color: aqua;
+    text-align: center;
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 15px;
+    padding: 0;
+}
+.indicacion{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding: 5px;
+}
+.tcuerpo{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+thead{
+    border: 1px solid black;
+    padding: 5px;
+
+}
+.sobrante{
+    border: none;
+    text-align: right;
+}
+
+.botton{
+    width: 25%;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(0, 255, 255, 0.507);
+    margin-left: 90px;
+    margin-right: 20px;
+    margin-top: 30px;
+    border: 2px solid aqua;
+}
+.botton:hover{
+    width: 25%;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(128, 128, 128, 0.479);
+    margin-left: 90px;
+    margin-right: 20px;
+    margin-top: 30px;
+    border: 2px solid gray;
+}

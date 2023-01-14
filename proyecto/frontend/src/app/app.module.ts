@@ -10,7 +10,7 @@ import { FacturaComponent } from './cliente/factura/factura.component';
   declarations: [
     AppComponent,
     VentaComponent,
-    FacturaComponent
+    FacturaComponent,
   ],
   imports: [
     BrowserModule,

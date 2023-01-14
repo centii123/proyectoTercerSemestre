@@ -7,7 +7,7 @@ import { ClienteComponent } from './cliente.component';
 
 @NgModule({
   declarations: [
-    ClienteComponent
+    ClienteComponent,
   ],
   imports: [
     CommonModule,

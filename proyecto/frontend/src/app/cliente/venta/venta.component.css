@@ -131,3 +131,15 @@ thead{
     margin-top: 30px;
     border: 2px solid gray;
 }
+.pago{
+    width: 40%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    float: right;
+    margin-top: 0px;
+}
+.forma{
+    margin-left: 360px;
+    margin-right: 39px;
+    margin-top: 10px;
+}

@@ -7,6 +7,7 @@ import { NavComponent } from './nav/nav.component';
 import { FacturaComponent } from './factura/factura.component';
 import { VentaComponent } from './venta/venta.component';
 import { FooterComponent } from './footer/footer.component';
+import { BuscarClienteComponent } from './buscar-cliente/buscar-cliente.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     FacturaComponent,
     VentaComponent,
-    FooterComponent
+    FooterComponent,
+    BuscarClienteComponent
   ],
   imports: [
     CommonModule,

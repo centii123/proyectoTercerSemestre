@@ -6,6 +6,7 @@ import { ClienteComponent } from './cliente.component';
 import { NavComponent } from './nav/nav.component';
 import { FacturaComponent } from './factura/factura.component';
 import { VentaComponent } from './venta/venta.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { VentaComponent } from './venta/venta.component';
     ClienteComponent,
     NavComponent,
     FacturaComponent,
-    VentaComponent
+    VentaComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

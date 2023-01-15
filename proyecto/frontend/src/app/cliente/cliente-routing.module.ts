@@ -4,12 +4,17 @@ import { ClienteComponent } from './cliente.component';
 import { FacturaComponent } from './factura/factura.component';
 import { NavComponent } from './nav/nav.component';
 import { VentaComponent } from './venta/venta.component';
+import { FooterComponent } from './footer/footer.component';
+import { BuscarClienteComponent } from './buscar-cliente/buscar-cliente.component';
+
 
 const routes: Routes = [
   { path: '', component: ClienteComponent },
   { path: 'factura', component: FacturaComponent },
   { path: 'venta', component: VentaComponent },
-  { path: 'nav', component: NavComponent}
+  { path: 'nav', component: NavComponent},
+  { path: 'footer', component: FooterComponent},
+  { path: 'buscarCliente', component: BuscarClienteComponent}
 ];
 
 @NgModule({

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { ClienteModule } from './cliente/cliente.module';
 //import { ComprasModule } from './compras/compras.module';
 //import { InventarioModule } from './inventario/inventario.module';
 
@@ -14,7 +13,6 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //ClienteModule,
     //ComprasModule,
     //InventarioModule,
   ],

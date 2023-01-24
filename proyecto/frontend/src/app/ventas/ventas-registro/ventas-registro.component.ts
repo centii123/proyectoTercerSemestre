@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./ventas-registro.component.css']
 })
 export class VentasRegistroComponent {
-
+  ngOnInit(){
+    console.log('hola')
+  }
 }

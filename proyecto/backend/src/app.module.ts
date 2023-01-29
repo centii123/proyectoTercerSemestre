@@ -12,7 +12,7 @@ import { VentasModule } from './ventas/ventas.module';
     port: 5432,
     username: 'postgres',
     password: '123',
-    database: 'proyectoPrueba',
+    database: 'proyecto',
     entities: [__dirname + '/**/*.entity{.ts,.js}'], 
     synchronize: true 
 

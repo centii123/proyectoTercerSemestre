@@ -71,3 +71,24 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## conect
+//basedatos modulos 
+npm install --save @nestjs/typeorm typeorm pg
+
+//paginacion 
+npm i --save class-validator class-transformer
+
+-UsePipes , ValidationPipe-> en el controlador
+
+-en el  main.ts hay que poner si o si
+    app.useGlobalPipes(
+        new ValidationPipe({
+        forbidNonWhitelisted: true,
+        transformOptions: {
+            enableImplicitConversion: true
+        }
+
+        })
+    )

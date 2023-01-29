@@ -17,7 +17,10 @@ export class producto{
     stock_min:number
 
     @Column({type: 'decimal'})
-    precio:number
+    precio_compra:number
+
+    @Column({type: 'decimal'})
+    precio_venta:number
 
     @OneToMany(()=>detalle_venta, det=>det.id_detalle_venta,{cascade:true})
     id_detalle_venta:detalle_venta

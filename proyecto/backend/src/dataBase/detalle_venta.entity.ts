@@ -13,13 +13,7 @@ export class detalle_venta{
     @Column({type: 'int'})
     cantidad:number
 
-    @Column({type: 'int'})
-    precio_unitario:number
-
     @Column({type: 'decimal'})
-    descuento:number
-
-    @Column({type: 'int'})
     iva_producto:number
 
     @Column({type: 'varchar', length: 100})

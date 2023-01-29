@@ -1,5 +1,6 @@
+import { categorias } from './categorias.entity';
 import { detalle_venta } from './detalle_venta.entity';
-import { Entity,PrimaryGeneratedColumn,Column, OneToMany } from "typeorm";
+import { Entity,PrimaryGeneratedColumn,Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 
 @Entity()
 export class producto{
@@ -20,5 +21,9 @@ export class producto{
 
     @OneToMany(()=>detalle_venta, det=>det.id_detalle_venta,{cascade:true})
     id_detalle_venta:detalle_venta
+
+    @ManyToOne(()=>categorias,cat=>cat.id_prod,{onDelete:'CASCADE',onUpdate:'CASCADE'})
+    @JoinColumn({name:'id_cat'})
+    id_cat:categorias[]
 }
 

@@ -2,16 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 95%;
-    margin-left: 27px;
-    margin-top: 2%;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 3%;
 
 }
 
 .contenedor2 {
 
     display: flex;
-    background-color: rgb(223, 224, 238);
     width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -22,27 +21,13 @@
 
 
 .elemento1 {
-    margin-top: 30px;
-    width: 400px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 450px;
     border: 2px solid rgb(14, 247, 255);
-    height: 250px;
     border-radius: 15px;
-    background-color: #c7c7c7;
-}
-
-.elemento2 {
-
-    margin-top: 30px;
-    width: 500px;
-
-
-}
-
-.tabla1 {
-    background-color: rgb(255, 255, 255);
-    width: 80%;
-    border-radius: 10px;
-    margin-left: 10%;
+    background-color: #e5e5e5;
+    height: 400px;
 }
 
 .titulos {
@@ -74,7 +59,7 @@ h2 {
 }
 
 .formulario {
-    margin-left: 25%;
+    margin-left: 30%;
 }
 
 .boton {
@@ -85,13 +70,17 @@ h2 {
     margin-left: 15%;
 }
 
-.buscar {
-    margin-left: 40%;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.bt-buscar {
-    border-radius: 7px;
-    border: none;
+@media (max-width: 700px){
+    h2{
+       font-size: 12px;
+    }
+    .input{
+        width: 70%;
+    }
+    .titulos{
+        width: 80%;
+        margin-left: 10%;
+    }
+   
+   
 }

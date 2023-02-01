@@ -10,6 +10,8 @@ import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { FooterComponent } from './footer/footer.component';
 
 
+
+
 @NgModule({
   declarations: [
     ComprasComponent,
@@ -22,6 +24,6 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     CommonModule,
     ComprasRoutingModule
-  ]
+  ],
 })
 export class ComprasModule { }

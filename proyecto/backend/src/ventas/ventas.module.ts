@@ -10,11 +10,12 @@ import { documento_venta } from 'src/dataBase/documento_venta.entity';
 import { ClienteService } from './services/cliente.service';
 import { FacturaController } from './factura/factura.controller';
 import { ProductosController } from './productos/productos.controller';
+import { FacturaService } from './services/factura.service';
 
 
 @Module({
     imports:[TypeOrmModule.forFeature([cliente,documento_venta,detalle_venta,producto,empleados])],
     controllers: [ClienteController, FacturaController, ProductosController],
-    providers:[ClienteService]
+    providers:[ClienteService, FacturaService]
 })
 export class VentasModule {}

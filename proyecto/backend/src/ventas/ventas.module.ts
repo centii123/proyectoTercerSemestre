@@ -8,14 +8,17 @@ import { ClienteController } from './cliente/cliente.controller';
 
 import { documento_venta } from 'src/dataBase/documento_venta.entity';
 import { ClienteService } from './services/cliente.service';
-import { FacturaController } from './factura/factura.controller';
+
 import { ProductosController } from './productos/productos.controller';
-import { FacturaService } from './services/factura.service';
+import { DetalleVentaService } from './services/detalle_venta.service';
+import { DocumentoVentaService } from './services/documento_venta.service';
+import { FacturaController } from './factura/factura.controller';
+
 
 
 @Module({
     imports:[TypeOrmModule.forFeature([cliente,documento_venta,detalle_venta,producto,empleados])],
-    controllers: [ClienteController, FacturaController, ProductosController],
-    providers:[ClienteService, FacturaService]
+    controllers: [ClienteController, ProductosController, FacturaController],
+    providers:[ClienteService, DetalleVentaService, DocumentoVentaService]
 })
 export class VentasModule {}

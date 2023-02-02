@@ -1,6 +1,6 @@
 import { IsOptional, IsNumber } from 'class-validator';
 
-export class ClienteSerch{
+export class ClienteSerchDTO{
     @IsOptional()
     @IsNumber()
     cedula:number

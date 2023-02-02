@@ -1,4 +1,4 @@
-export class ClienteRegister{
+export class ClienteRegisterDTO{
     cedula_cliente:string
     nombres:string
     apellido:string

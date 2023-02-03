@@ -13,13 +13,6 @@ export class ClienteService {
         return await this.cliente.query(`SELECT * FROM cliente where cedula_cliente like '%${cedula}%' ORDER BY cedula_cliente LIMIT 5 OFFSET 0`)
     }
 
-    async getclient(cedulacli:string):Promise<ClienteRegisterDTO>{
-        return await this.cliente.findOne({
-            where:cedulacli
-            
-        })
-    }
-
     async ClienteRegis(clienteRegis:ClienteRegisterDTO[]){
         let cliente= await this.cliente.findOne({
             where:{

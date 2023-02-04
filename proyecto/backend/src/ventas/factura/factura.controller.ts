@@ -1,23 +1,35 @@
+
+import { Detalle_ventaDTO } from './../DTO/Detalle_venta.dto';
 import { DetalleVentaService } from './../services/detalle_venta.service';
-import { Documento_VentaDTO } from './../DTO/documento_venta.dto';
-import { Body, UsePipes } from '@nestjs/common/decorators';
+import { Body} from '@nestjs/common/decorators';
 import { DocumentoVentaService } from './../services/documento_venta.service';
 
-import { Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
 
 @Controller('factura')
 export class FacturaController {
 
+    datosregisterdocumento;
+    datosregisterdetalleVenta:Detalle_ventaDTO;
     constructor(private documentoVenta:DocumentoVentaService, private detalleVenta:DetalleVentaService){}
 
-    @Get()
-    get(){
-        let hola=this.documentoVenta.obtenerUlRegistro()
-        return hola
-    }
-
     @Post()
-    post(@Body() datos){
-        return this.detalleVenta.registrardetalle(datos)
+    async post(@Body() datos):Promise<string>{
+        this.datosregisterdocumento={
+            total:datos['total'],
+            cedula_cliente:datos['cedula_cliente']
+        }
+        this.datosregisterdetalleVenta={
+            descripccion:datos['descripccion'],
+            cantidad:datos['cantidad'],
+            iva_producto:datos['iva_producto'],
+            tipo_producto:datos['tipo_producto'],
+            id_prod:datos['id_prod'],
+        }
+
+            await this.documentoVenta.registrardoc(this.datosregisterdocumento)
+            await this.detalleVenta.registrardetalle(this.datosregisterdetalleVenta)
+
+        return 'registrado'
     }
 }

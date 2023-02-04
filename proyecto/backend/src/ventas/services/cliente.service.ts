@@ -13,8 +13,8 @@ export class ClienteService {
         return await this.cliente.query(`SELECT * FROM cliente where cedula_cliente like '%${cedula}%' ORDER BY cedula_cliente LIMIT 5 OFFSET 0`)
     }
 
-    async ClienteRegis(clienteRegis:ClienteRegisterDTO[]){
-        let cliente= await this.cliente.findOne({
+    async ClienteRegis(clienteRegis:ClienteRegisterDTO[]):Promise<object>{
+        let cliente:cliente= await this.cliente.findOne({
             where:{
                 cedula_cliente: clienteRegis['cedula_cliente']
             }
@@ -23,7 +23,7 @@ export class ClienteService {
             return new HttpException('el usuario ya existe',HttpStatus.FOUND)
           }
         
-          let create=this.cliente.create(clienteRegis)
+          let create:cliente[]=await this.cliente.create(clienteRegis)
           return await this.cliente.save(create)
     }
 }

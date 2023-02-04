@@ -1,4 +1,3 @@
-import { Detalle_ventaDTO } from './../DTO/Detalle_venta.dto';
 
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -10,16 +9,11 @@ import { DocumentoVentaService } from './documento_venta.service';
 export class DetalleVentaService {
     constructor( @InjectRepository(detalle_venta) private detalle:Repository<detalle_venta>, private documentoVentaService:DocumentoVentaService ){}
 
-    async get(){
-        return await this.detalle.find()
-    }
-
-    async registrardetalle(datos:Detalle_ventaDTO){
+    async registrardetalle(datos):Promise<detalle_venta>{
        let idUltimo= await this.documentoVentaService.obtenerUlRegistro();
        let num=idUltimo[0]['id_documento_venta']
-       console.log(num)
 
-        let objeto:Detalle_ventaDTO={
+        let objeto={
             descripccion:datos.descripccion,
             cantidad:datos.cantidad,
             iva_producto:datos.iva_producto,
@@ -28,7 +22,7 @@ export class DetalleVentaService {
             id_documento_venta:num
         }
         let crear= await this.detalle.create(objeto)
-        return await this.detalle.save(crear)
+        return await this.detalle.save<detalle_venta>(crear)
     }
 
 

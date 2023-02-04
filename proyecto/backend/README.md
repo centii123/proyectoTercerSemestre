@@ -74,11 +74,43 @@ Nest is [MIT licensed](LICENSE).
 
 
 ## conect
+//DEPENDENCIAS
+npm install
+
 //basedatos modulos 
 npm install --save @nestjs/typeorm typeorm pg
 
 //paginacion 
 npm i --save class-validator class-transformer
+
+## USO API
+//CLIENTES
+/*BUSCAR CLIENTES*/
+GET---localhost:3000/cliente?cedula=*numero de cedula*
+
+/*REGISTRAR CLIENTES*/
+POST---localhost:3000/cliente
+{
+  "cedula_cliente": string,->que sean numeros
+  "nombres": string,
+  "apellido": string,
+  "email": string
+}
+
+//FACTURA
+
+POST--localhost:3000/factura
+{
+  "total":number,
+  "cedula_cliente":string ->usuario existente,
+  "descripccion":string,
+  "cantidad":number,
+  "iva:producto":decimal,
+  "tipo de producto":string,
+  "id_prod":number;->producto existente
+
+}
+
 
 
 

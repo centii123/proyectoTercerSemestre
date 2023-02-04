@@ -1,6 +1,6 @@
-export class Documento_VentaDTO{
-    fecha?:Date
-    total?:number
-    cedula_empleados?:string
-    cedula_cliente?:string
+
+
+
+export class DocumentoVentaUlDTO{
+    id_documento_venta:number
 }

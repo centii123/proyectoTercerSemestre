@@ -85,7 +85,7 @@ npm i --save class-validator class-transformer
 
 ## USO API
 //CLIENTES
-/*BUSCAR CLIENTES*/
+/*BUSCAR CLIENTES 5 POR BUSQUEDA*/
 GET---localhost:3000/cliente?cedula=*numero de cedula*
 
 /*REGISTRAR CLIENTES*/
@@ -110,6 +110,13 @@ POST--localhost:3000/factura
   "id_prod":number;->producto existente
 
 }
+
+//PRODUCTOS
+/*BUSCADOR DE PRODUCTOS 5 POR BUSQUEDA*/
+GET---localhost:3000/productos?producto=*NOMBRE DEL PRODUCTO A BUSCAR DE TIPO STRING*
+
+
+
 
 
 

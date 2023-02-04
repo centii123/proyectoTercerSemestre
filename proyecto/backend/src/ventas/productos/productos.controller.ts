@@ -1,7 +1,8 @@
-import { ProductSerchDTO } from './../DTO/ProductDTO.dto';
-import { Query } from '@nestjs/common/decorators';
+import { ProductSerchDTO, ProductUpdate_DTO } from './../DTO/ProductDTO.dto';
+import { Query, Param } from '@nestjs/common/decorators';
 import { ProductsService } from './../services/products.service';
-import { Controller, Get, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, UsePipes, ValidationPipe, Put, Body } from '@nestjs/common';
+
 
 @Controller('productos')
 export class ProductosController {
@@ -11,5 +12,15 @@ export class ProductosController {
     @UsePipes(ValidationPipe)
     buscar(@Query() producto:ProductSerchDTO){
         return this.ProductsSer.serchProduct(producto)
+    }
+
+    @Get(':id')
+    getproduc(@Param('id' , ParseIntPipe) id:number ){
+        return this.ProductsSer.getproduct(id)
+    }
+
+    @Put(':idPro')
+    updateProdu(@Param('idPro',ParseIntPipe) idPro:number, @Body() stock){
+        return this.ProductsSer.updateStockProuct(idPro,stock)
     }
 }

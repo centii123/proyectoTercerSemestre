@@ -115,6 +115,16 @@ POST--localhost:3000/factura
 /*BUSCADOR DE PRODUCTOS 5 POR BUSQUEDA*/
 GET---localhost:3000/productos?producto=*NOMBRE DEL PRODUCTO A BUSCAR DE TIPO STRING*
 
+/*buscardor de un producto*/
+GET---localhost:3000/productos/1 ->numero del id de producto
+
+/*Actualizar productos*/
+PUT---localhost:3000/productos/1 ->id del producto a actualizar el stock
+/*body*/
+{
+  "stock": 80 ->TIPO number
+}
+
 
 
 

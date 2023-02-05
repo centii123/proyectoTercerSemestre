@@ -74,11 +74,60 @@ Nest is [MIT licensed](LICENSE).
 
 
 ## conect
+//DEPENDENCIAS
+npm install
+
 //basedatos modulos 
 npm install --save @nestjs/typeorm typeorm pg
 
 //paginacion 
 npm i --save class-validator class-transformer
+
+## USO API
+//CLIENTES
+/*BUSCAR CLIENTES 5 POR BUSQUEDA*/
+GET---localhost:3000/cliente?cedula=*numero de cedula*
+
+/*REGISTRAR CLIENTES*/
+POST---localhost:3000/cliente
+{
+  "cedula_cliente": string,->que sean numeros
+  "nombres": string,
+  "apellido": string,
+  "email": string
+}
+
+//FACTURA
+
+POST--localhost:3000/factura
+{
+  "total":number,
+  "cedula_cliente":string ->usuario existente,
+  "descripccion":string,
+  "cantidad":number,
+  "iva:producto":decimal,
+  "tipo de producto":string,
+  "id_prod":number;->producto existente
+
+}
+
+//PRODUCTOS
+/*BUSCADOR DE PRODUCTOS 5 POR BUSQUEDA*/
+GET---localhost:3000/productos?producto=*NOMBRE DEL PRODUCTO A BUSCAR DE TIPO STRING*
+
+/*buscardor de un producto*/
+GET---localhost:3000/productos/1 ->numero del id de producto
+
+/*Actualizar productos*/
+PUT---localhost:3000/productos/1 ->id del producto a actualizar el stock
+/*body*/
+{
+  "stock": 80 ->TIPO number
+}
+
+
+
+
 
 
 

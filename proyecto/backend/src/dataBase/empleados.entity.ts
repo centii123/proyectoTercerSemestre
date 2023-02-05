@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { documento_venta } from './documento_venta.entity';
+import { documento_compra } from "./documento_compra.entity";
 import { rol } from './rol.entity';
 
 
@@ -25,6 +26,9 @@ export class empleados{
 
     @OneToMany(()=>documento_venta,doc=>doc.id_documento_venta,{cascade:true})
     id_documento_venta:documento_venta
+
+    @OneToMany(()=>documento_compra,doc=>doc.id_compra,{cascade:true})
+    id_compra:documento_compra
 
     @ManyToOne(()=>rol,ro=>ro.cedula_empleados,{onDelete:'CASCADE',onUpdate:'CASCADE'})
     @JoinColumn({name:' id_rol'})

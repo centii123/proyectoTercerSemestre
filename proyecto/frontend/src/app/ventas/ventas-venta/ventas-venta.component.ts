@@ -10,7 +10,7 @@ import { buscarProductos } from '../services/productos.services';
 export class VentasVentaComponent {
   serch:string | undefined
   productos: any | undefined
-  activador:boolean | undefined
+  contador:any| undefined
   constructor(private http:buscarProductos){}
   
   ngOnInit():void{
@@ -20,15 +20,10 @@ export class VentasVentaComponent {
   busqueda(event:Event){
     //this.http.obtenerProducto(this.serch)
     this.serch=(<HTMLInputElement>event.target).value
-    if(this.serch){
-      this.activador=true
-      this.http.obtenerProducto(this.serch).subscribe(e=>{
+    this.http.obtenerProducto(this.serch).subscribe(e=>{
         this.productos=e
+        
       })
-      
-    }else{
-      this.activador=false
-    }
     
     
   }

@@ -14,15 +14,21 @@
         <div class="buscar">
             <input type="search" placeholder="Buscar producto" (keyup)="busqueda($event)" >
             <div class="buscadorProduct" >
-                <div *ngIf="activador == true">
-                    <div *ngFor="let a of productos">
-                            <div>{{a.nombre_p}}</div> 
-                        
+                <div *ngIf="serch">
+                    <div *ngIf="!productos" >
+                        <div>no encontrado</div>
+                    </div>
+
+                    <div *ngIf="productos" >
+                        <div *ngFor="let a of productos">
+                            <div>{{a.nombre_p}} {{a.stock}}</div> 
+                        </div>
                     </div>
                 </div>
-                <ng-template #noenco>
-                    <div>no encontrado</div>
-                </ng-template>
+                    
+
+                    
+
                 
             </div>
         </div>

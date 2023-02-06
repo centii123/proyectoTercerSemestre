@@ -10,6 +10,7 @@ import { VentasDocumentoComponent } from './ventas-documento/ventas-documento.co
 import { VentasInicioComponent } from './ventas-inicio/ventas-inicio.component';
 import { VentasRegistroComponent } from './ventas-registro/ventas-registro.component';
 import { FormsModule } from '@angular/forms';
+import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     VentasVentaComponent,
     VentasDocumentoComponent,
     VentasInicioComponent,
-    VentasRegistroComponent
+    VentasRegistroComponent,
+    VentasClienteComponent
   ],
   imports: [
     CommonModule,

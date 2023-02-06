@@ -108,7 +108,7 @@ POST--localhost:3000/factura
   "iva:producto":decimal,
   "tipo de producto":string,
   "id_prod":number;->producto existente
-
+ 
 }
 
 //PRODUCTOS

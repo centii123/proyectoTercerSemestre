@@ -55,6 +55,7 @@ footer{
 .buscar{
     display: flex;
     justify-content: center;
+    position: relative;
 }
 .table{
     display: flex;
@@ -135,4 +136,11 @@ outline: none;
 }
 .tota{
     text-align: center;
+}
+.buscadorProduct{
+position: absolute;
+background-color: black;
+color: white;
+top: 100%;
+width: 185px;
 }

@@ -9,10 +9,10 @@ export class buscarProductos{
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }
-    readonly api = 'localhost:3000/cliente'
+    readonly api = 'http://localhost:3000/productos'
     constructor(private http:HttpClient){}
         obtenerProducto(id_prod:string){
-            const url = `${this.api}`;
+            const url = `${this.api}?producto=${id_prod}`;
             return this.http.get(url)
         }
 }

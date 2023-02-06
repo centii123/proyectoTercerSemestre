@@ -21,8 +21,8 @@ export class ClienteServices{
         return this.http.post(url,registro) 
     }
 
-    buscarCliente(){
-        const url = `${this.api}`;
+    buscarCliente(numCedula: string){
+        const url = `${this.api}?cedula=${numCedula}`;
         return this.http.get(url);
     }
     

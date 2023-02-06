@@ -12,8 +12,19 @@
             <input type="text" class="cliente" placeholder="Cliente">
         </div>
         <div class="buscar">
-            <input type="search" placeholder="Buscar producto">
-            <div></div>
+            <input type="search" placeholder="Buscar producto" (keyup)="busqueda($event)" >
+            <div class="buscadorProduct" >
+                <div *ngIf="activador == true">
+                    <div *ngFor="let a of productos">
+                            <div>{{a.nombre_p}}</div> 
+                        
+                    </div>
+                </div>
+                <ng-template #noenco>
+                    <div>no encontrado</div>
+                </ng-template>
+                
+            </div>
         </div>
         <div class="table">
             <table class="tabla">
@@ -68,3 +79,4 @@
     <!--<footer class="footer">
     </footer>-->
 </div>
+{{serch}}

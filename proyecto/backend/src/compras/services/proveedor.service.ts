@@ -11,4 +11,10 @@ export class ProveedorService {
        const newPro = await this.proRepository.create(prov)
        return await this.proRepository.save(newPro)
     }
+
+    //listar proveedores//
+    async prover(){
+        return this.proRepository.find()
+    }
+
 }

@@ -9,8 +9,14 @@ export class CategoriaService {
 
     constructor(@InjectRepository(categoria_proveedor) private catRepository: Repository<categoria_proveedor>){}
 
+    //insertar categorias//
     async createCategoria(cat){
        const newCat = await this.catRepository.create(cat)
        return await this.catRepository.save(newCat)
+    }
+
+    //listar categorias//
+    async getCate(){
+        return this.catRepository.find()
     }
 }

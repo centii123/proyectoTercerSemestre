@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { ProveedorService } from '../services/proveedor.service';
 
 @Controller('proveedores')
@@ -10,6 +10,11 @@ export class ProveedoresController {
     createCat(@Body() newPro){
       return  this.proService.createProveedor(newPro)
 
+    }
+
+    @Get()
+    getPro(){
+      return this.proService.prover();
     }
 
 }

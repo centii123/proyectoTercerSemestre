@@ -13,11 +13,10 @@ import { ComprasModule } from './compras/compras.module';
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: '123',
-    database: 'proyecto',
+    password: '1234',
+    database: 'proyecto2',
     entities: [__dirname + '/**/*.entity{.ts,.js}'], 
     synchronize: true 
-
 }),
     VentasModule,
     ComprasModule],

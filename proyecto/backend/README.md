@@ -105,8 +105,8 @@ POST--localhost:3000/factura
   "cedula_cliente":string ->usuario existente,
   "descripccion":string,
   "cantidad":number,
-  "iva:producto":decimal,
-  "tipo de producto":string,
+  "iva_producto":decimal,
+  "tipo_producto":string,
   "id_prod":number;->producto existente
  
 }

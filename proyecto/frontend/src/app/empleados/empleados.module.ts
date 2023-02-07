@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { EmpleadosRoutingModule } from './empleados-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { EmpleadosRoutingModule } from './empleados-routing.module';
   ],
   imports: [
     CommonModule,
-    EmpleadosRoutingModule
+    EmpleadosRoutingModule,
+    FormsModule
   ],
   exports: [
     LoginComponent,

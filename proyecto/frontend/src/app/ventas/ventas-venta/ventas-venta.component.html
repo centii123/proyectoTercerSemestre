@@ -48,14 +48,14 @@
                     </tr>
                 </thead>
                 <tbody class="cuerpo">
-                    <span *ngFor="let i of catalogoProductos">
-                        <tr>
+                    
+                        <tr *ngFor="let i of catalogoProductos">
                             <td>{{i.id_prod}}</td>
-                            <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
-                            <td>Pastillas Chitolinas</td>
-                            <td>$12.00</td>
+                            <td class="centrar"><input value="1" type="number" class="cantidad" min="1" ></td>
+                            <td>{{i.nombre_p}}</td>
+                            <td>{{i.precio_venta}}</td>
                         </tr>
-                    </span>
+
                     
 
 

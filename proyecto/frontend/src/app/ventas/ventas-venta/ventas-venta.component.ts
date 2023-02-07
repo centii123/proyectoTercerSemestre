@@ -36,7 +36,7 @@ export class VentasVentaComponent {
       const currentValue = localStorage.getItem('producto');
       localStorage.setItem('producto', currentValue ? `${currentValue}, ${value}` : value);
     }
-
+ 
     //seleccion de productos
 
     selectP(event:Event){

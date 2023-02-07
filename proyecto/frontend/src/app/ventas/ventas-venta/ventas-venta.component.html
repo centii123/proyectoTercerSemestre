@@ -13,18 +13,21 @@
             <input type="text" class="cliente" placeholder="Cliente">
         </div>
         <div class="buscar">
-            <input type="search" placeholder="Buscar producto" (keyup)="busqueda($event)" >
+            <input type="text" placeholder="Buscar producto" (keyup)="busqueda($event)" >
             <div class="buscadorProduct" >
                 <div *ngIf="serch">
-                    <div *ngIf="!productos" >
-                        <div>no encontrado</div>
-                    </div>
-
-                    <div *ngIf="productos" >
+                    <div *ngIf="!productos.message else mas">
                         <div *ngFor="let a of productos">
-                            <div>{{a.nombre_p}} {{a.stock}}</div> 
+                            <div *ngIf="a.nombre_p">
+                             <div>{{a.nombre_p}} {{a.stock}}</div>     
+                            </div>                    
                         </div>
                     </div>
+                    <ng-template #mas>
+                        
+                        <div>no encontrado</div>   
+                    </ng-template>
+                        
                 </div>
                     
 
@@ -86,5 +89,6 @@
     <!--<footer class="footer">
     </footer>-->
 </div>
-{{serch}}
+
 </app-ventas>
+

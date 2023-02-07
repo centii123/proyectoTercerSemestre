@@ -1,3 +1,4 @@
+<app-ventas>
 <div class="contenedor">
     <!--<nav>
         
@@ -5,38 +6,37 @@
     <main>
        <div class="registro">
             <h3>REGISTRO</h3>
-            <form action="" method="post">
+            <div class="form">
                 <div class="form-R">
 
                 </div>
                 <div class="form-R">
-                    <input type="text" id="" class="">
+                    <input type="text" id="" class="" [(ngModel)]="data.cedula_cliente">
+                    <label class="label" for="">CEDULA</label>
+                </div>
+                <div class="form-R">
+                    <input type="text" id="" class="" [(ngModel)]="data.nombres">
                     <label class="label" for="">NOMBRES</label>
                 </div>
                 <div class="form-R">
-                    <input type="text" id="" class="">
+                    <input type="text" id="" class="" [(ngModel)]="data.apellido">
                     <label class="label" for="">APELLIDOS</label>
                 </div>
                 <div class="form-R">
-                    <input type="text" id="" class="">
-                    <label class="label" for="">DIRECCION</label>
-                </div>
-                <div class="form-R">
-                    <input type="text" id="" class="">
+                    <input type="text" id="" class="" [(ngModel)]="data.email">
                     <label class="label" for="">CORREO ELECTRONICO</label>
                 </div>
-                <div class="form-R">
-                    <input type="text" id="" class="">
-                    <label class="label" for="">TELF</label>
-                </div>
                 <div class="botones">
-                    <a href=""><button class="atras-boton boton">ATRAS</button></a>
-                    <button type="submit" class="registro-boton boton">REGISTRAR</button>
+                    <a routerLink="/ventas/inicio"><button class="atras-boton boton">ATRAS</button></a>
+                    <button (click)="CrearCliente()"  type="submit" class="registro-boton boton">REGISTRAR</button>
                     
                 </div>
-            </form>
+            </div>
        </div>
-       
+
     </main>
     <!--<footer></footer>-->
+    <app-ventas-footer></app-ventas-footer>
 </div>
+</app-ventas>
+

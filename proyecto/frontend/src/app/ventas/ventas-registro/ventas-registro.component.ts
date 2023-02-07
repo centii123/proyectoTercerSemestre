@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RegistroModel } from '../models/register.entity';
+import { ClienteServices } from '../services/cliente.services';
 
 @Component({
   selector: 'app-ventas-registro',
@@ -7,18 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ventas-registro.component.css']
 })
 export class VentasRegistroComponent implements OnInit{
+  data:RegistroModel ={
+    cedula_cliente:'',
+    nombres:'',
+    apellido:'',
+    email:''
+  }
   ngOnInit(){
-    console.log('hola')
+    //this.getRegistro();
   }
-  readonly local = 'localhost:3000/cliente'
-  constructor(private http:HttpClient){}
-  getRegistro(){
-    const data={
-      cedula:String,
-      nombres:String,
-      apellido:String,
-      email:String,
-    }
-    this.http.post(this.local,data).subscribe(e=>{console.log(e)});
-  }
+
+  constructor(private http:ClienteServices){}
+  CrearCliente(){
+    console.log(this.data)
+    this.http.registrarCliente(this.data).subscribe(e=>{console.log(e)});
+  } 
+
+
 }

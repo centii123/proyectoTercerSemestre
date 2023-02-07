@@ -5,6 +5,7 @@ import { VentasDocumentoComponent } from './ventas-documento/ventas-documento.co
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VentasComponent } from './ventas.component';
+import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
 
 const routes: Routes = [
   { path: '', component: VentasComponent },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'inicio', component: VentasInicioComponent },
   { path: 'registro', component: VentasRegistroComponent },
   { path: 'venta', component: VentasVentaComponent },
+  { path: 'cliente', component: VentasClienteComponent },
+
 ];
 
 @NgModule({

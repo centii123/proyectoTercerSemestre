@@ -1,3 +1,4 @@
+<app-ventas>
 <div class="contenedor">
     <!--<nav class="nav">
 
@@ -12,8 +13,29 @@
             <input type="text" class="cliente" placeholder="Cliente">
         </div>
         <div class="buscar">
-            <input type="search" placeholder="Buscar producto">
-            <div></div>
+            <input type="text" placeholder="Buscar producto" [value]="serch" #guardarLocalStorage (keyup)="busqueda($event)" >
+
+            <div class="buscadorProduct" >
+                <div *ngIf="serch">
+                    <div *ngIf="!productos.message else mas">
+                        <div *ngFor="let a of productos">
+                            <div *ngIf="a.nombre_p">
+                             <li class="selector" value="{{a.id_prod}}" (click)="selectP($event)" >{{a.nombre_p}} {{a.stock}}</li>     
+                            </div>                    
+                        </div>
+                    </div>
+                    <ng-template #mas>
+                        
+                        <div>no encontrado</div>   
+                    </ng-template>
+                        
+                </div>
+                    
+
+                    
+
+                
+            </div>
         </div>
         <div class="table">
             <table class="tabla">
@@ -26,12 +48,16 @@
                     </tr>
                 </thead>
                 <tbody class="cuerpo">
-                    <tr>
-                        <td>Codigo</td>
-                        <td class="centrar"><input type="number" class="cantidad"></td>
-                        <td>Pastillas Chitolinas</td>
-                        <td>$12.00</td>
-                    </tr>
+                    
+                        <tr *ngFor="let i of catalogoProductos">
+                            <td>{{i.id_prod}}</td>
+                            <td class="centrar"><input value="1" type="number" class="cantidad" min="1" ></td>
+                            <td>{{i.nombre_p}}</td>
+                            <td>{{i.precio_venta}}</td>
+                        </tr>
+
+                    
+
 
                 </tbody>
             </table>
@@ -59,12 +85,17 @@
             </table>
 
         </div>
+        {{ selectProducts | json }}
         <div class="compra">
-            <input type="submit" value="Comprar" class="comprar">
+            <input type="submit" value="Comprar" class="comprar" (click)="save()">
             <input type="submit" value="Cancelar" class="cancelar">
         </div>
-
+ 
     </main>
+
     <!--<footer class="footer">
     </footer>-->
 </div>
+
+</app-ventas>
+

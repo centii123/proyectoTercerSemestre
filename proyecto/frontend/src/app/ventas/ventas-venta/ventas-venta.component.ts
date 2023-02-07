@@ -10,7 +10,7 @@ import { buscarProductos } from '../services/productos.services';
 export class VentasVentaComponent {
   selectProducts:number[]=[]
   catalogoProductos:object[]=[]
-  serch:string | undefined
+  serch:string=""
   productos: any | undefined
   contador:any| undefined
   activador:boolean | undefined
@@ -43,12 +43,16 @@ export class VentasVentaComponent {
       let html=event.target as HTMLLIElement
       let valor=html.value
       this.selectProducts.push(valor)
+      this.obtenerProductos(valor)
+      this.serch=""
     }
 
-    obtenerProductos(){
-      for (let i = 0; i < this.selectProducts.length; i++) {
-        this.http.obtenerP1(this.selectProducts[i]).subscribe()
-      }
+    obtenerProductos(a:number){
+        this.http.obtenerP1(a).subscribe(e=>{
+          this.catalogoProductos.push(e)
+          console.log(this.catalogoProductos)
+        })
+
       
     }
 }

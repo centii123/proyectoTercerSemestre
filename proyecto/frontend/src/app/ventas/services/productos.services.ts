@@ -15,4 +15,9 @@ export class buscarProductos{
             const url = `${this.api}?producto=${id_prod}`;
             return this.http.get(url)
         }
+
+        obtenerP1(num:number){
+            let url=`${this.api}/${num}`
+            return this.http.get(url)
+        }
 }

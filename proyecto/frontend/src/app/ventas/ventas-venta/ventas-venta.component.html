@@ -20,7 +20,7 @@
                     <div *ngIf="!productos.message else mas">
                         <div *ngFor="let a of productos">
                             <div *ngIf="a.nombre_p">
-                             <div>{{a.nombre_p}} {{a.stock}}</div>     
+                             <li class="selector" value="{{a.id_prod}}" (click)="selectP($event)" >{{a.nombre_p}} {{a.stock}}</li>     
                             </div>                    
                         </div>
                     </div>
@@ -50,10 +50,89 @@
                 <tbody class="cuerpo">
                     <tr>
                         <td>Codigo</td>
-                        <td class="centrar"><input type="number" class="cantidad"></td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
                         <td>Pastillas Chitolinas</td>
                         <td>$12.00</td>
                     </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr><tr>
+                        <td>Codigo</td>
+                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
+                        <td>Pastillas Chitolinas</td>
+                        <td>$12.00</td>
+                    </tr>
+                    
 
                 </tbody>
             </table>
@@ -81,7 +160,7 @@
             </table>
 
         </div>
-
+        {{ selectProducts | json }}
         <div class="compra">
             <input type="submit" value="Comprar" class="comprar" (click)="save(guardarLocalStorage.value)">
             <input type="submit" value="Cancelar" class="cancelar">

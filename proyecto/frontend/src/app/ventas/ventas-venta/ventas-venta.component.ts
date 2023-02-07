@@ -12,11 +12,12 @@ export class VentasVentaComponent {
   catalogoProductos:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
   serch:string=""
-  cantidad:number | undefined
+  cantidad:number | null=null
+  cantidadUno:number | null=null
   productos: any | undefined
   valor:number=1
   suma:number=0
-  private objeto!: ProductosModel;
+  private objeto: ProductosModel | null=null;
   constructor(private http:buscarProductos){
   }
   
@@ -26,13 +27,17 @@ export class VentasVentaComponent {
   }
 
   producto(cantidad:number,productos:ProductosModel){
+   
+    let precio=this.convertirnum(productos.precio_venta)
+    
     this.objeto={
       id_prod:productos.id_prod,
       nombre_p:productos.nombre_p,
       stock:productos.stock,
       stock_min:productos.stock_min,
-      total:productos.precio_venta,
-      cantidad:cantidad
+      cantidades:cantidad,
+      total:precio 
+      
     }
     this.facturaProductos.push(this.objeto)
     console.log(this.facturaProductos)
@@ -60,8 +65,11 @@ export class VentasVentaComponent {
         let hola = this.facturaProductos.find(productopedido => {
           return productopedido.id_prod === a;
         });
-        if (hola !== undefined) {
-          hola.cantidad 
+        if (hola != undefined) {
+          console.log('existe')
+
+          
+          
         } else {
           this.cantidad = 1;
           this.producto(this.cantidad, e);
@@ -82,15 +90,17 @@ export class VentasVentaComponent {
       
     }
 
-   
+    
+    convertirnum(num:string){
+      let numero=parseFloat(num)
+      return numero
+    }
 
-
-    convertirNum(hola:string,cantidad:string){
-      this.suma=0
-      let num= parseFloat(hola)
-      let num2=parseInt(cantidad)
-      let suma=num * num2
-      this.suma= suma
+    canti(event:Event){
+      let targe=event.target as HTMLInputElement
+      let cantidad=targe.value
+      let canvernum= parseInt(cantidad)
+      this.cantidadUno= canvernum
     }
 
 }

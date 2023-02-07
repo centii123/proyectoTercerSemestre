@@ -10,8 +10,8 @@ export class EmpleadosService {
   constructor(
     @InjectRepository(empleados) private empleadosRepository: Repository<empleados>
   ) {}
-  createEmpleados(empleados) {
-    const newEmpleados = this.empleadosRepository.create(empleados)
-    return this.empleadosRepository.save(newEmpleados)
+  async createEmpleados(empleados) {
+    const newEmpleados = await this.empleadosRepository.create(empleados)
+    return await this.empleadosRepository.save(newEmpleados)
   }
 }

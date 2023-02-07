@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'compras', loadChildren: () => import('./compras/compras.module').then(m => m.ComprasModule) },
   { path: 'inventario', loadChildren: () => import('./inventario/inventario.module').then(m => m.InventarioModule) },
   { path: 'ventas', loadChildren: () => import('./ventas/ventas.module').then(m => m.VentasModule) },
+  { path: 'auth',loadChildren: ()=> import('./empleados/empleados.module').then(m => m.EmpleadosModule)},
   { path: '**', component: AppComponent},
 ];
 

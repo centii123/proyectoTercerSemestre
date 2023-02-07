@@ -32,9 +32,10 @@ export class VentasVentaComponent {
   }
 
     //localStorage---guardar
-    save(value: string) {
-      const currentValue = localStorage.getItem('producto');
-      localStorage.setItem('producto', currentValue ? `${currentValue}, ${value}` : value);
+    save() {
+      const currentValue = sessionStorage.getItem('producto');
+      sessionStorage.setItem('producto', JSON.stringify(this.catalogoProductos));
+      
     }
  
     //seleccion de productos

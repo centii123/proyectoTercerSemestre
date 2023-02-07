@@ -25,6 +25,12 @@ export class ProveedoresController {
   getPro() {
     return this.proService.prover();
   }
+  //buscar proveedor//
+  @Get(':id')
+  buscprov(@Param('id', ParseIntPipe) id: number)
+  {
+      return this.proService.buscpro(id);
+  }
 
   //eliminar proveedores//
   @Delete(':id')

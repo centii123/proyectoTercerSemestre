@@ -21,13 +21,13 @@
 
 
 .elemento1 {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 1px;
+    margin-bottom: 10px;
     width: 450px;
     border: 2px solid rgb(14, 247, 255);
     border-radius: 15px;
     background-color: #e5e5e5;
-    height: 400px;
+    height: 430px;
 }
 
 .titulos {

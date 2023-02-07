@@ -5,7 +5,8 @@ import { ComprasComponent } from './compras.component';
 import { NavComponent} from './nav/nav.component';
 import {RegistroProveedorComponent} from './registro-proveedor/registro-proveedor.component'
 import {ProveedoresComponent} from './proveedores/proveedores.component'
-import {FooterComponent} from './footer/footer.component'
+import {FooterComponent} from './footer/footer.component';
+import {ListarCategoriaComponent } from './listar-categoria/listar-categoria.component'
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
 { path: 'nav',component: NavComponent},
 { path: 'registro-p',component: RegistroProveedorComponent},
 { path: 'proveedores',component: ProveedoresComponent},
-{ path: 'footer',component: FooterComponent}
+{ path: 'footer',component: FooterComponent},
+{ path: 'listar-c', component: ListarCategoriaComponent}
 ];
 
 @NgModule({

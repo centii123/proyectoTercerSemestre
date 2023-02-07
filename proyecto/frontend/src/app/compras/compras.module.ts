@@ -8,6 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { RegistroProveedorComponent } from './registro-proveedor/registro-proveedor.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { FooterComponent } from './footer/footer.component';
+import { ListarCategoriaComponent } from './listar-categoria/listar-categoria.component';
 
 
 
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     RegistroProveedorComponent,
     ProveedoresComponent,
-    FooterComponent
+    FooterComponent,
+    ListarCategoriaComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ nav{
     background-color: blue;
     height: 13vh;
 }
+
 main{
     height: calc(100vh - 24vh);
     display: flex;
@@ -22,7 +23,7 @@ footer{
     align-items: center;
     gap: 30px;
     width: 100%;
-    overflow: hidden;
+
 
 }
 .registro{
@@ -90,3 +91,11 @@ h3{
 .registro-boton2{
     background-color: rgb(203, 15, 15);
 }
+
+.buscarCliente{
+position: absolute;
+background-color: black;
+color: white;
+width: 100%;
+}
+

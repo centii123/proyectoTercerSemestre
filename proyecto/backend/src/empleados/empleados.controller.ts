@@ -6,7 +6,7 @@ import { EmpleadosService } from './empleados.service';
 export class EmpleadosController {
   constructor(private empleadosService: EmpleadosService) {}
 
-  @Post('empleados')
+  @Post()
   export(@Body() newEmpleados: CreateEmpleadosDto) {
     return this.empleadosService.createEmpleados(newEmpleados);
   }

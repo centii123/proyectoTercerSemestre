@@ -49,11 +49,14 @@
                 </thead>
                 <tbody class="cuerpo">
                     
-                        <tr *ngFor="let i of catalogoProductos">
-                            <td>{{i.id_prod}}</td>
-                            <td class="centrar"><input value="1" type="number" class="cantidad" min="1" ></td>
-                            <td>{{i.nombre_p}}</td>
-                            <td>{{i.precio_venta}}</td>
+                        <tr *ngFor="let i of catalogoProductos" >
+                                <td>{{i.id_prod}}</td>
+                                <td class="centrar"><input  type="number" [value]="valor" class="cantidad" min="1" #cantidad></td>
+                                <td>{{i.nombre_p}}</td>
+                                <td>{{i.precio_venta}}</td>
+
+                                
+                                
                         </tr>
 
                     

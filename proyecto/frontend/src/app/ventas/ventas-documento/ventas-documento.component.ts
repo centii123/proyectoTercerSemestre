@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductosModel } from '../models/productos.entity';
 import { ClienteServices } from '../services/cliente.services';
 
 @Component({
@@ -7,9 +8,20 @@ import { ClienteServices } from '../services/cliente.services';
   styleUrls: ['./ventas-documento.component.css']
 })
 export class VentasDocumentoComponent {
+  catalogo:ProductosModel[]=[]
   constructor(private http:ClienteServices){}
   consultarCli(){
     const url = 'localhost:3000/factura'
    // this.http.registrarFactura().subscribe(e=>{console.log(e)})
   }
+  //save localStoratge--
+  mostrar(){
+    let  catalogo = sessionStorage.getItem('producto');
+    if ( catalogo) {
+      this. catalogo = JSON.parse( catalogo);
+    } else {
+      this. catalogo = [];
+    }
+  }
+
 }

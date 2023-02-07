@@ -10,6 +10,7 @@ import { buscarProductos } from '../services/productos.services';
 export class VentasVentaComponent {
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
+  catalogo:ProductosModel[]=[]
   serch:string=""
   productos: any | undefined
   contador:any| undefined
@@ -30,11 +31,11 @@ export class VentasVentaComponent {
         this.productos=e
       })
   }
-
+ 
     //localStorage---guardar
     save() {
-      const currentValue = sessionStorage.getItem('producto');
       sessionStorage.setItem('producto', JSON.stringify(this.catalogoProductos));
+    //localStorage--mostrar
     }
  
     //seleccion de productos
@@ -55,4 +56,27 @@ export class VentasVentaComponent {
 
       
     }
+
+    /*
+          <table>
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>producto</th>
+                <th>cantidad</th>
+                <th>costo</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of catalogoProductos">
+                <td>{{ item.id_prod}}</td>
+                <td>{{ item.nombre_p}}</td>
+                <td>{{ item.precio_compra}}</td>
+                <td>{{ item.precio_venta}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+    */ 
 }

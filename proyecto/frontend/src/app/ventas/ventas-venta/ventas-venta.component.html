@@ -49,11 +49,11 @@
                 </thead>
                 <tbody class="cuerpo">
                     
-                        <tr *ngFor="let i of catalogoProductos" >
+                        <tr *ngFor="let i of facturaProductos" >
                                 <td>{{i.id_prod}}</td>
-                                <td class="centrar"><input  type="number" [value]="valor" class="cantidad" min="1" #cantidad></td>
+                                <td class="centrar"><input  type="number" value="{{i.cantidades}}" (change)="canti($event)" class="cantidad" min="1" #cantidad></td>
                                 <td>{{i.nombre_p}}</td>
-                                <td>{{i.precio_venta}}</td>
+                                <td>{{i.total}}</td>
 
                                 
                                 

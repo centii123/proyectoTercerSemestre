@@ -5,21 +5,21 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { VentasModule } from './ventas/ventas.module';
 import { ComprasModule } from './compras/compras.module';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: '123',
-    database: 'proyecto2',
-    entities: [__dirname + '/**/*.entity{.ts,.js}'], 
-    synchronize: true 
-}),
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: '123',
+      database: 'proyecto2',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
     VentasModule,
-    ComprasModule],
+    ComprasModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

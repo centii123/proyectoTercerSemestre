@@ -18,7 +18,7 @@ body{
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    background: rgba(0, 128, 0, 0.350);
+    background: rgb(122, 220, 220);
 }
 h2{
     text-align: center;

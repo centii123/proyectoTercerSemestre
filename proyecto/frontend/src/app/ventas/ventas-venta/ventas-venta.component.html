@@ -48,12 +48,15 @@
                     </tr>
                 </thead>
                 <tbody class="cuerpo">
-                    <tr>
-                        <td>Codigo</td>
-                        <td class="centrar"><input type="number" class="cantidad" min="1" ></td>
-                        <td>Pastillas Chitolinas</td>
-                        <td>$12.00</td>
-                    </tr>
+                    
+                        <tr *ngFor="let i of catalogoProductos">
+                            <td>{{i.id_prod}}</td>
+                            <td class="centrar"><input value="1" type="number" class="cantidad" min="1" ></td>
+                            <td>{{i.nombre_p}}</td>
+                            <td>{{i.precio_venta}}</td>
+                        </tr>
+
+                    
 
 
                 </tbody>
@@ -84,10 +87,10 @@
         </div>
         {{ selectProducts | json }}
         <div class="compra">
-            <input type="submit" value="Comprar" class="comprar" (click)="save(guardarLocalStorage.value)">
+            <input type="submit" value="Comprar" class="comprar" (click)="save()">
             <input type="submit" value="Cancelar" class="cancelar">
         </div>
-
+ 
     </main>
 
     <!--<footer class="footer">

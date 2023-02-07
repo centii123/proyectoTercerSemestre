@@ -11,10 +11,12 @@ export class VentasVentaComponent {
   serch:string | undefined
   productos: any | undefined
   contador:any| undefined
-  constructor(private http:buscarProductos){}
+  constructor(private http:buscarProductos){
+  }
   
   ngOnInit():void{
     //this.busqueda()
+
   }
 
   busqueda(event:Event){
@@ -25,4 +27,10 @@ export class VentasVentaComponent {
         this.productos=e
       })
   }
+
+    //localStorage---guardar
+    save(value: string) {
+      const currentValue = localStorage.getItem('producto');
+      localStorage.setItem('producto', currentValue ? `${currentValue}, ${value}` : value);
+    }
 }

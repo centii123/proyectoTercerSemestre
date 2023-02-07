@@ -13,7 +13,8 @@
             <input type="text" class="cliente" placeholder="Cliente">
         </div>
         <div class="buscar">
-            <input type="text" placeholder="Buscar producto" (keyup)="busqueda($event)" >
+            <input type="text" placeholder="Buscar producto" #guardarLocalStorage (keyup)="busqueda($event)" >
+
             <div class="buscadorProduct" >
                 <div *ngIf="serch">
                     <div *ngIf="!productos.message else mas">
@@ -80,12 +81,14 @@
             </table>
 
         </div>
+
         <div class="compra">
-            <input type="submit" value="Comprar" class="comprar">
+            <input type="submit" value="Comprar" class="comprar" (click)="save(guardarLocalStorage.value)">
             <input type="submit" value="Cancelar" class="cancelar">
         </div>
 
     </main>
+
     <!--<footer class="footer">
     </footer>-->
 </div>

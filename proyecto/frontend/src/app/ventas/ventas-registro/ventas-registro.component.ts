@@ -24,4 +24,6 @@ export class VentasRegistroComponent implements OnInit{
     console.log(this.data)
     this.http.registrarCliente(this.data).subscribe(e=>{console.log(e)});
   } 
+
+
 }

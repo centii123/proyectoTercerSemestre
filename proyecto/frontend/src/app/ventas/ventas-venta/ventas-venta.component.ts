@@ -36,6 +36,7 @@ export class VentasVentaComponent {
       stock:productos.stock,
       stock_min:productos.stock_min,
       cantidades:cantidad,
+      precio_venta:precio,
       total:precio 
       
     }
@@ -66,9 +67,12 @@ export class VentasVentaComponent {
           return productopedido.id_prod === a;
         });
         if (hola != undefined) {
-          console.log('existe')
+          if(hola.cantidades && hola.total){
+            hola.cantidades++
+            
+            hola.total=hola.precio_venta * hola.cantidades
+          }
 
-          
           
         } else {
           this.cantidad = 1;
@@ -85,7 +89,7 @@ export class VentasVentaComponent {
       let valor=html.value
       this.selectProducts.push(valor)
       this.obtenerProductos(valor)
-      
+      this.serch=""
       
       
     }
@@ -96,11 +100,36 @@ export class VentasVentaComponent {
       return numero
     }
 
-    canti(event:Event){
-      let targe=event.target as HTMLInputElement
-      let cantidad=targe.value
-      let canvernum= parseInt(cantidad)
-      this.cantidadUno= canvernum
+    numas(event:Event){
+      let target=event.target as HTMLInputElement
+      let valor= target.value
+      let num=this.convertirnum(valor)
+      if(num>=1){
+        let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+      let id_prodnum:number
+      if(id_prod){
+        id_prodnum=this.convertirnum(id_prod)
+      }
+      
+      console.log(valor)
+      
+
+      let hola = this.facturaProductos.find(productopedido => {
+        return productopedido.id_prod === id_prodnum;
+      });
+        if (hola != undefined) {
+          if(hola.cantidades && hola.total){
+            hola.cantidades= num
+            hola.total=num * hola.precio_venta
+          }
+
+          
+        }
+      }
+      
+
     }
+
+    
 
 }

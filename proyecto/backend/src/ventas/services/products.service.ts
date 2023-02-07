@@ -1,6 +1,6 @@
 import { ProductSerchDTO, ProductUpdate_DTO } from './../DTO/ProductDTO.dto';
 import { producto } from './../../dataBase/producto.entity';
-import { Injectable } from '@nestjs/common';
+import { Injectable,HttpException, HttpStatus  } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -20,7 +20,11 @@ export class ProductsService {
       return this.productoss.update(id_prod,stock)
     }
 
-    async serchProduct({producto}:ProductSerchDTO):Promise<producto>{
-        return await this.productoss.query(`SELECT * FROM producto where nombre_p like '%${producto}%' ORDER BY id_prod LIMIT 5 OFFSET 0`)
+    async serchProduct({producto}:ProductSerchDTO){
+        let productOOS= await this.productoss.query(`SELECT * FROM producto where nombre_p like '%${producto}%' ORDER BY id_prod LIMIT 5 OFFSET 0`)
+        if(productOOS.length==0){
+            return new HttpException('no encontrado',HttpStatus.FOUND)
+        }
+        return productOOS
     }
 }

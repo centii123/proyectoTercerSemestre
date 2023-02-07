@@ -21,10 +21,8 @@ export class VentasVentaComponent {
     //this.http.obtenerProducto(this.serch)
     this.serch=(<HTMLInputElement>event.target).value
     this.http.obtenerProducto(this.serch).subscribe(e=>{
+  console.log(e)
         this.productos=e
-        
       })
-    
-    
   }
 }

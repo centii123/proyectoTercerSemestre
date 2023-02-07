@@ -5,7 +5,7 @@ import { FacturaModel } from "../models/factura.entity";
 @Injectable({
     providedIn: 'root'
 })
-export class ClienteServices{
+export class FacturaServices{
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }

@@ -9,9 +9,18 @@
                 <div class="form-R">
                 </div>
                 <div class="form-R">
-                    <input type="text" id="" class="" placeholder="Buscar clientes">
+                    <input type="text" id="" class="" onkeypress="return event.charCode>=48 && event.charCode<=57" placeholder="Buscar clientes" (keyup)="clienteBuscador($event)" >
                     <div class="buscarCliente">
-
+                        <div *ngIf="valor">
+                            <div *ngIf="client.message else hola">
+                                <div>cliente no encontrado</div>
+                            </div>
+                            <ng-template #hola>
+                                <div *ngFor="let a of client">
+                                    <div>{{a.cedula_cliente}} {{a.nombres}}</div>
+                                </div>
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
                 <div class="botones">

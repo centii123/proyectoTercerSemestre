@@ -7,27 +7,31 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ClienteService {
-    constructor(@InjectRepository(cliente) private cliente:Repository<cliente>){}
+  constructor(
+    @InjectRepository(cliente) private cliente: Repository<cliente>,
+  ) {}
 
-    async getCliente({cedula}: ClienteSerchDTO){
-        let hol= await this.cliente.query(`SELECT * FROM cliente where cedula_cliente like '%${cedula}%' ORDER BY cedula_cliente LIMIT 5 OFFSET 0`)
-        if(hol.length==0){
-            return new HttpException('no encontrado',HttpStatus.FOUND)
-        }
-        return hol
+  async getCliente({ cedula }: ClienteSerchDTO) {
+    const hol = await this.cliente.query(
+      `SELECT * FROM cliente where cedula_cliente like '%${cedula}%' ORDER BY cedula_cliente LIMIT 5 OFFSET 0`,
+    );
+    if (hol.length == 0) {
+      return new HttpException('no encontrado', HttpStatus.FOUND);
+    }
+    return hol;
+  }
+
+  async ClienteRegis(clienteRegis: ClienteRegisterDTO[]): Promise<object> {
+    const cliente: cliente = await this.cliente.findOne({
+      where: {
+        cedula_cliente: clienteRegis['cedula_cliente'],
+      },
+    });
+    if (cliente) {
+      return new HttpException('el usuario ya existe', HttpStatus.FOUND);
     }
 
-    async ClienteRegis(clienteRegis:ClienteRegisterDTO[]):Promise<object>{
-        let cliente:cliente= await this.cliente.findOne({
-            where:{
-                cedula_cliente: clienteRegis['cedula_cliente']
-            }
-        })
-         if(cliente){
-            return new HttpException('el usuario ya existe',HttpStatus.FOUND)
-          }
-        
-          let create:cliente[]=await this.cliente.create(clienteRegis)
-          return await this.cliente.save(create)
-    }
+    const create: cliente[] = await this.cliente.create(clienteRegis);
+    return await this.cliente.save(create);
+  }
 }

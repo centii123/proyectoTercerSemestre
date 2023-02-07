@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 export class CreateEmpleadosDto {
-  cedula: number;
-  nombre: string;
+  cedula_empleados: number;
+  nombres: string;
   apellidos: string;
   email: string;
   password: string;
-  rol: number
+  id_rol: number
 }

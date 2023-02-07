@@ -7,7 +7,8 @@ export class EmpleadosController {
   constructor(private empleadosService: EmpleadosService) {}
 
   @Post()
-  export(@Body() newEmpleados: CreateEmpleadosDto) {
+  registrar(@Body() newEmpleados) {
     return this.empleadosService.createEmpleados(newEmpleados);
+    //console.log(newEmpleados);//
   }
 }

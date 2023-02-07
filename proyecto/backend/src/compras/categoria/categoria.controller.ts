@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, ParseIntPipe, Delete, Param, Patch } from '@nestjs/common';
 import { CategoriaService } from '../services/categoria.service';
 
 @Controller('categoria')
@@ -17,6 +17,19 @@ export class CategoriaController {
     getCate(){
       return this.catService.getCate();
     }
+
+    //eliminar categoria//
+    @Delete(':id')
+    deletecate(@Param('id', ParseIntPipe) id: number){
+     return this.catService.deleteCat(id)
+    }
     
+    //actualizar categoria//
+    @Patch(':id')
+    updatecate(@Param('id', ParseIntPipe) id:number, @Body() UpdateCate){
+
+      return this.catService.updateCte(id, UpdateCate)
+    }
+
 
 }

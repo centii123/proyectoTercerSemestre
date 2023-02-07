@@ -35,7 +35,6 @@ export class VentasVentaComponent {
     save() {
       const currentValue = sessionStorage.getItem('producto');
       sessionStorage.setItem('producto', JSON.stringify(this.catalogoProductos));
-      
     }
 
     //seleccion de productos

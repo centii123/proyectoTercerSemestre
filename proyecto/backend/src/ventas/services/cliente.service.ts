@@ -9,8 +9,12 @@ import { Repository } from 'typeorm';
 export class ClienteService {
     constructor(@InjectRepository(cliente) private cliente:Repository<cliente>){}
 
-    async getCliente({cedula}: ClienteSerchDTO):Promise<cliente[]>{
-        return await this.cliente.query(`SELECT * FROM cliente where cedula_cliente like '%${cedula}%' ORDER BY cedula_cliente LIMIT 5 OFFSET 0`)
+    async getCliente({cedula}: ClienteSerchDTO){
+        let hol= await this.cliente.query(`SELECT * FROM cliente where cedula_cliente like '%${cedula}%' ORDER BY cedula_cliente LIMIT 5 OFFSET 0`)
+        if(hol.length==0){
+            return new HttpException('no encontrado',HttpStatus.FOUND)
+        }
+        return hol
     }
 
     async ClienteRegis(clienteRegis:ClienteRegisterDTO[]):Promise<object>{

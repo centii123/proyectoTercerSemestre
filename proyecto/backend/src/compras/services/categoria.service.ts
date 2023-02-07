@@ -19,4 +19,15 @@ export class CategoriaService {
     async getCate(){
         return this.catRepository.find()
     }
+
+    //eliminar categoria//
+    deleteCat(id_cat: number){
+        return this.catRepository.delete({id_cat})
+    }
+
+    //actualizar categoria//
+    async updateCte(id_cat: number, cat1){ 
+       return this.catRepository.update({id_cat}, cat1)
+    }
+
 }

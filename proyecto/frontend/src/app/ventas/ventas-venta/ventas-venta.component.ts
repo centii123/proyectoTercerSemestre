@@ -11,16 +11,38 @@ export class VentasVentaComponent {
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
   catalogo:ProductosModel[]=[]
+  facturaProductos:ProductosModel[]=[]
   serch:string=""
+  cantidad:number | null=null
+  cantidadUno:number | null=null
   productos: any | undefined
-  contador:any| undefined
-  activador:boolean | undefined
+  valor:number=1
+  suma:number=0
+  private objeto: ProductosModel | null=null;
   constructor(private http:buscarProductos){
   }
   
   ngOnInit():void{
     //this.busqueda()
 
+  }
+
+  producto(cantidad:number,productos:ProductosModel){
+   
+    let precio=this.convertirnum(productos.precio_venta)
+    
+    this.objeto={
+      id_prod:productos.id_prod,
+      nombre_p:productos.nombre_p,
+      stock:productos.stock,
+      stock_min:productos.stock_min,
+      cantidades:cantidad,
+      precio_venta:precio,
+      total:precio 
+      
+    }
+    this.facturaProductos.push(this.objeto)
+    console.log(this.facturaProductos)
   }
 
   busqueda(event:Event){
@@ -39,6 +61,29 @@ export class VentasVentaComponent {
     }
  
     //seleccion de productos
+    obtenerProductos(a:number){
+      
+      this.http.obtenerP1(a).subscribe(e => {
+        let hola = this.facturaProductos.find(productopedido => {
+          return productopedido.id_prod === a;
+        });
+        if (hola != undefined) {
+          if(hola.cantidades && hola.total){
+            hola.cantidades++
+            
+            hola.total=hola.precio_venta * hola.cantidades
+          }
+
+          
+        } else {
+          this.cantidad = 1;
+          this.producto(this.cantidad, e);
+          console.log("ingreso");
+        }
+
+      })
+
+  }
 
     selectP(event:Event){
       let html=event.target as HTMLLIElement
@@ -46,37 +91,45 @@ export class VentasVentaComponent {
       this.selectProducts.push(valor)
       this.obtenerProductos(valor)
       this.serch=""
-    }
-
-    obtenerProductos(a:number){
-        this.http.obtenerP1(a).subscribe(e=>{
-          this.catalogoProductos.push(e)
-          console.log(this.catalogoProductos)
-        })
-
+      
       
     }
+    
+    convertirnum(num:string){
+      let numero=parseFloat(num)
+      return numero
+    }
 
-    /*
-          <table>
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>producto</th>
-                <th>cantidad</th>
-                <th>costo</th>
+    numas(event:Event){
+      let target=event.target as HTMLInputElement
+      let valor= target.value
+      let num=this.convertirnum(valor)
+      if(num>=1){
+        let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+      let id_prodnum:number
+      if(id_prod){
+        id_prodnum=this.convertirnum(id_prod)
+      }
+      
+      console.log(valor)
+      
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of catalogoProductos">
-                <td>{{ item.id_prod}}</td>
-                <td>{{ item.nombre_p}}</td>
-                <td>{{ item.precio_compra}}</td>
-                <td>{{ item.precio_venta}}</td>
+      let hola = this.facturaProductos.find(productopedido => {
+        return productopedido.id_prod === id_prodnum;
+      });
+        if (hola != undefined) {
+          if(hola.cantidades && hola.total){
+            hola.cantidades= num
+            hola.total=num * hola.precio_venta
+          }
 
-              </tr>
-            </tbody>
-          </table>
-    */ 
+          
+        }
+      }
+      
+
+    }
+
+    
+
 }

@@ -9,7 +9,7 @@ import { buscarProductos } from '../services/productos.services';
 })
 export class VentasVentaComponent {
   selectProducts:number[]=[]
-  catalogoProductos:object[]=[]
+  catalogoProductos:ProductosModel[]=[]
   serch:string=""
   productos: any | undefined
   contador:any| undefined

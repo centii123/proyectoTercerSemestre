@@ -10,16 +10,32 @@ import { buscarProductos } from '../services/productos.services';
 export class VentasVentaComponent {
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
+  facturaProductos:ProductosModel[]=[]
   serch:string=""
+  cantidad:number | undefined
   productos: any | undefined
-  contador:any| undefined
-  activador:boolean | undefined
+  valor:number=1
+  suma:number=0
+  private objeto!: ProductosModel;
   constructor(private http:buscarProductos){
   }
   
   ngOnInit():void{
     //this.busqueda()
 
+  }
+
+  producto(cantidad:number,productos:ProductosModel){
+    this.objeto={
+      id_prod:productos.id_prod,
+      nombre_p:productos.nombre_p,
+      stock:productos.stock,
+      stock_min:productos.stock_min,
+      total:productos.precio_venta,
+      cantidad:cantidad
+    }
+    this.facturaProductos.push(this.objeto)
+    console.log(this.facturaProductos)
   }
 
   busqueda(event:Event){
@@ -38,21 +54,43 @@ export class VentasVentaComponent {
     }
  
     //seleccion de productos
+    obtenerProductos(a:number){
+      
+      this.http.obtenerP1(a).subscribe(e => {
+        let hola = this.facturaProductos.find(productopedido => {
+          return productopedido.id_prod === a;
+        });
+        if (hola !== undefined) {
+          hola.cantidad 
+        } else {
+          this.cantidad = 1;
+          this.producto(this.cantidad, e);
+          console.log("ingreso");
+        }
+
+      })
+
+  }
 
     selectP(event:Event){
       let html=event.target as HTMLLIElement
       let valor=html.value
       this.selectProducts.push(valor)
       this.obtenerProductos(valor)
-      this.serch=""
-    }
-
-    obtenerProductos(a:number){
-        this.http.obtenerP1(a).subscribe(e=>{
-          this.catalogoProductos.push(e)
-          console.log(this.catalogoProductos)
-        })
-
+      
+      
       
     }
+
+   
+
+
+    convertirNum(hola:string,cantidad:string){
+      this.suma=0
+      let num= parseFloat(hola)
+      let num2=parseInt(cantidad)
+      let suma=num * num2
+      this.suma= suma
+    }
+
 }

@@ -6,6 +6,7 @@ nav{
     background-color: blue;
     height: 13vh;
 }
+
 main{
     height: calc(100vh - 24vh);
     display: flex;
@@ -22,12 +23,12 @@ footer{
     align-items: center;
     gap: 30px;
     width: 100%;
-    overflow: hidden;
+
 
 }
 .registro{
     width: 500px; /*30vw*/
-    height: 65vh;
+    height: 40vh;
     background-color: #bbbbbb;
     display: flex;
     flex-direction: column;
@@ -68,7 +69,33 @@ footer{
 .registro-boton{
     background-color: green;
 }
-.atras-boton{
-    color: black;
-    background-color: rgb(179, 179, 179);
+h3{
+    font-size: 25px;
+    margin-top: 30px;
 }
+.boton1{
+    border: solid 2px black;
+    border-radius: 5px;
+    
+    color: white;
+}
+.registro-boton1{
+    background-color: rgb(181, 159, 21);
+}
+.boton2{
+    border: solid 2px black;
+    border-radius: 5px;
+    
+    color: white;
+}
+.registro-boton2{
+    background-color: rgb(203, 15, 15);
+}
+
+.buscarCliente{
+position: absolute;
+background-color: black;
+color: white;
+width: 100%;
+}
+

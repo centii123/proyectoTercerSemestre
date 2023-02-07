@@ -1,3 +1,4 @@
+<app-ventas>
 <div class="contenedor">
     <!--<nav class="nav">
 
@@ -12,8 +13,28 @@
             <input type="text" class="cliente" placeholder="Cliente">
         </div>
         <div class="buscar">
-            <input type="search" placeholder="Buscar producto">
-            <div></div>
+            <input type="text" placeholder="Buscar producto" (keyup)="busqueda($event)" >
+            <div class="buscadorProduct" >
+                <div *ngIf="serch">
+                    <div *ngIf="!productos.message else mas">
+                        <div *ngFor="let a of productos">
+                            <div *ngIf="a.nombre_p">
+                             <div>{{a.nombre_p}} {{a.stock}}</div>     
+                            </div>                    
+                        </div>
+                    </div>
+                    <ng-template #mas>
+                        
+                        <div>no encontrado</div>   
+                    </ng-template>
+                        
+                </div>
+                    
+
+                    
+
+                
+            </div>
         </div>
         <div class="table">
             <table class="tabla">
@@ -68,3 +89,6 @@
     <!--<footer class="footer">
     </footer>-->
 </div>
+
+</app-ventas>
+

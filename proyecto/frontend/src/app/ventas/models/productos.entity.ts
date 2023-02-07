@@ -6,6 +6,6 @@ export interface ProductosModel{
     precio_compra?:any
     precio_venta?:any
     id_cat?:number
-    cantidad?:number
-    total?:string
+    cantidades?:number | null
+    total?:number
 }

@@ -13,6 +13,7 @@ body{
     margin: 0;
 }
 main{
+    padding-top: 50px;
     width: 100%;
     min-height: 78vh;
     padding-bottom: 25px;
@@ -29,7 +30,7 @@ footer{
 }
 .contenedor{
     width: 100%;
-    background-color: var(--body-color);
+    background-color:gray;
 }
 
 .ventas{
@@ -55,7 +56,6 @@ footer{
 .buscar{
     display: flex;
     justify-content: center;
-    position: relative;
 }
 .table{
     display: flex;
@@ -83,7 +83,7 @@ tbody td, tbody th{
 }
 .comprar{
     cursor: pointer;
-    background: var(--comprar-color);
+    background: green;
     border-radius: 15px;
     padding: 10px 15px;
     font-family: 'Times New Roman', Times, serif;
@@ -91,21 +91,21 @@ tbody td, tbody th{
 }
 .cancelar{
     cursor: pointer;
-    background: var(--cancelar-color);
+    background: red;
     border-radius: 15px;
     padding: 10px 15px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
 }
 .comprar:hover{
-    background: var(--comprar1-color);
+    background: rgba(0, 128, 0, 0.350);
     border-radius: 15px;
     padding: 10px 15px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
 }
 .cancelar:hover{
-    background: var(--cancelar2-color);
+    background: rgba(255, 0, 0, 0.350);
     border-radius: 15px;
     padding: 10px 15px;
     font-family: 'Times New Roman', Times, serif;
@@ -136,11 +136,4 @@ outline: none;
 }
 .tota{
     text-align: center;
-}
-.buscadorProduct{
-position: absolute;
-background-color: black;
-color: white;
-top: 100%;
-width: 185px;
 }

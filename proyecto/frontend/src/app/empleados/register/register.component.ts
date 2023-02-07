@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   }
   constructor(private empleadosService: EmpleadosService,private rolesService: RolesService){}
   roles: RolModel[] = [{id_rol: 1, descripcion: 'Rol1'}];
-  
+
   empleado: CreateEmpleadoModel = {
     cedula_empleados: 0,
     nombres:'',
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  
+
   register(empleado:CreateEmpleadoModel){
     try {
       if (empleado.clave === this.claveV) {

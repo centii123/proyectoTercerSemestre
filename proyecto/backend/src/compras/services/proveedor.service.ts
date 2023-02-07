@@ -16,9 +16,10 @@ export class ProveedorService {
   }
 
   //listar proveedores//
-  async prover() {
-    return this.proRepository.find();
-  }
+  async prover(){
+    let hol= await this.proRepository.query(`select p.nombre_prov, p.celular, p.direccion, c.especializacion from proveedor as p, categoria_proveedor as c where c.id_cat=p.id_cat`)
+    return hol
+}
 
   //buscar proveedor//
   async buscpro(id_prov: number){

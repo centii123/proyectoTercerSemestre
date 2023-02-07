@@ -14,7 +14,7 @@ import { EmpleadosModule } from './empleados/empleados.module';
       port: 5432,
       username: 'postgres',
       password: '123',
-      database: 'proyecto2',
+      database: 'proyecto',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),

@@ -20,6 +20,16 @@ export class ProveedorService {
     return this.proRepository.find();
   }
 
+  //buscar proveedor//
+  async buscpro(id_prov: number){
+    return this.proRepository.findOne({
+        where:{
+            id_prov
+        }
+    })
+
+}
+
   //eliminar proveedores//
   deleteProv(id_prov: number) {
     return this.proRepository.delete({ id_prov });

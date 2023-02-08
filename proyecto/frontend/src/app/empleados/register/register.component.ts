@@ -37,9 +37,9 @@ export class RegisterComponent implements OnInit {
     try {
       if (empleado.clave === this.claveV) {
         this.registerEmpleado(empleado)
+        this.router.navigate(['empleados/login']);
       }else {
         throw new Error("La contraseña no coincide");
-        this.router.navigate(['dashboard/patient']);
       }
     } catch (error) {
       console.log(error)

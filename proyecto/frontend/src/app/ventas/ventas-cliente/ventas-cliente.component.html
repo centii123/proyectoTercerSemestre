@@ -3,7 +3,7 @@
     <!--<nav> 
     </nav>--> 
     <main>
-       <div class="registro">
+       <div class="registro"> 
             <h3>Cliente</h3>
             <div class="form">
                 <div class="form-R">
@@ -14,10 +14,10 @@
                         <div *ngIf="valor">
                             <div *ngIf="client.message else hola">
                                 <div>cliente no encontrado</div>
-                            </div>
+                            </div>  
                             <ng-template #hola>
                                 <div *ngFor="let a of client">
-                                    <div>{{a.cedula_cliente}} {{a.nombres}}</div>
+                                    <div class="selector">{{a.cedula_cliente}} {{a.nombres}}</div>
                                 </div>
                             </ng-template>
                         </div>

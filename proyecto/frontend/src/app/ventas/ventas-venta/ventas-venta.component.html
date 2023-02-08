@@ -15,7 +15,7 @@
         <div class="buscar">
             <input type="text" placeholder="Buscar producto" [value]="serch" #guardarLocalStorage (keyup)="busqueda($event)" >
 
-            <div class="buscadorProduct" >
+            <div class="buscadorProduct" > 
                 <div *ngIf="serch">
                     <div *ngIf="!productos.message else mas">
                         <div *ngFor="let a of productos">
@@ -23,7 +23,7 @@
                              <li class="selector" value="{{a.id_prod}}" (click)="selectP($event)" >{{a.nombre_p}} {{a.stock}}</li>     
                             </div>                    
                         </div>
-                    </div>
+                    </div> 
                     <ng-template #mas>
                         
                         <div>no encontrado</div>   

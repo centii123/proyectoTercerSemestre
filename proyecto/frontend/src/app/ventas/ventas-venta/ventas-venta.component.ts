@@ -1,5 +1,5 @@
 import { FacturaServices } from './../services/factura.services';
-import { FacturaGene } from './../models/facturaGene.entity';
+import { FacturaGeneDetalle, FacturaGeneDocumento } from './../models/facturaGene.entity';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
@@ -14,10 +14,12 @@ export class VentasVentaComponent {
   cedula_cliente:string | undefined
   nombre_cliente:string | undefined
   selectProducts:number[]=[]
+  numDocumento:any
   catalogoProductos:ProductosModel[]=[]
   catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
-  facturaIngresar:FacturaGene | undefined
+  facturaIngresarDetalle:FacturaGeneDetalle | undefined
+  facturaIngresarDocumento:FacturaGeneDocumento | undefined
   precioTotal:number[]=[]
   serch:string=""
   cantidad:number | null=null
@@ -70,10 +72,14 @@ export class VentasVentaComponent {
       let productstorage=sessionStorage.getItem('producto')
       if(productstorage){
         let todo=JSON.parse(productstorage)
-        for (const i of todo) {
+        for (let i = 0; i < todo.length; i++) {
           if(this.cedula_cliente){
-            this.ingresarfactura(i,this.cedula_cliente)
+            this.ingresarfactura(todo[i],this.cedula_cliente,i)
           }
+          
+        }
+        for (const i of todo) {
+          
           
         }
       }
@@ -183,18 +189,42 @@ export class VentasVentaComponent {
       } 
 
 
-      ingresarfactura(element:any,cedula:string) {
 
-          this.facturaIngresar = {
-            total: element.total,
-            cedula_cliente: cedula,
+      async ingresarfactura(element:any,cedula:string,iteracion:number) {
+
+        
+        if(iteracion==0){
+          this.facturaIngresarDocumento ={
+            total: this.tot,
+            cedula_cliente: cedula
+          }
+          
+          console.log(this.facturaIngresarDocumento)
+          await this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
+        }
+        await this.facturaCreate.obtenerultimodoc().subscribe(e=>{
+          this.numDocumento= Object.values(e)[0]['id_documento_venta']
+          this.facturaIngresarDetalle = {
             descripccion: "papa",
             cantidad: element.cantidades,
             tipo_producto: "me como",
-            id_prod: element.id_prod
+            id_prod: element.id_prod,
+            id_documento_venta:this.numDocumento
           };
-          this.facturaCreate.registrarFactura(this.facturaIngresar).subscribe()
-          console.log(this.facturaIngresar)
+          console.log(this.facturaIngresarDetalle)
+          
+          this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
+
+        })
+        
+        console.log(this.numDocumento)
+        
+        
+
+
+          
+          //this.facturaCreate.registrarFactura(this.facturaIngresar).subscribe()
+          
   
       }
     

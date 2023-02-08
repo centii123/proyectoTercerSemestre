@@ -1,7 +1,7 @@
+import { FacturaGeneDetalle, FacturaGeneDocumento } from './../models/facturaGene.entity';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { FacturaModel } from "../models/factura.entity";
-import { FacturaGene } from "../models/facturaGene.entity";
+
 
 @Injectable({
     providedIn: 'root'
@@ -13,14 +13,19 @@ export class FacturaServices{
     readonly api = 'http://localhost:3000/factura'
 
     constructor(private http:HttpClient){}
-
-    registrarFactura(registro:any){
-        return this.http.post(this.api,registro)
+    obtenerultimodoc(){
+        let url=`${this.api}/ultimo`
+        return this.http.get(url)
     }
 
-    /*registrarId(registro:FacturaGene){
-        const url = '${this.api}';
+    registrarFacturaDocumento(registro:FacturaGeneDocumento){
+        let url=`${this.api}/documento`
         return this.http.post(url,registro)
-    }*/
+    }
+
+    registrarfacturaDetalle(registro:FacturaGeneDetalle){
+        const url = `${this.api}/detalle`;
+        return this.http.post(url,registro)
+    }
      
 }

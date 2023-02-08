@@ -200,9 +200,9 @@ export class VentasVentaComponent {
           console.log(this.facturaIngresarDocumento)
           await this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
         }
-        await this.facturaCreate.obtenerultimodoc().subscribe(e=>{
-          this.numDocumento= Object.values(e)[0]['id_documento_venta']
-          this.facturaIngresarDetalle = {
+        await this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
+          this.numDocumento= await Object.values(e)[0]['id_documento_venta']
+          this.facturaIngresarDetalle = await {
             descripccion: "papa",
             cantidad: element.cantidades,
             tipo_producto: "me como",
@@ -211,7 +211,7 @@ export class VentasVentaComponent {
           };
           console.log(this.facturaIngresarDetalle)
           
-          this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
+          await this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
 
         })
         

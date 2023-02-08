@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
 import { buscarProductos } from '../services/productos.services';
 
@@ -21,7 +22,7 @@ export class VentasVentaComponent {
   suma:number=0
   tot=0
   private objeto: ProductosModel | null=null;
-  constructor(private http:buscarProductos){
+  constructor(private http:buscarProductos, private router:Router){
   }
   
   ngOnInit():void{
@@ -57,9 +58,11 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
-
     sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
+      sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
+      //funcion para redireccionar en angular
+      this.router.navigate(['/ventas/documento/']);
     //localStorage--mostrar
     }
  
@@ -143,8 +146,8 @@ export class VentasVentaComponent {
         for (const i of suma) {
           this.tot=this.tot + i
         }
-       
       return this.tot
       
     }
+    
 }

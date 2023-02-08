@@ -8,6 +8,7 @@ import { ClienteServices } from '../services/cliente.services';
   styleUrls: ['./ventas-documento.component.css']
 }) 
 export class VentasDocumentoComponent {
+  tot:any 
   facturaProductos:ProductosModel[]=[]
   constructor(private http:ClienteServices){}
   consultarCli(){
@@ -15,12 +16,19 @@ export class VentasDocumentoComponent {
    // this.http.registrarFactura().subscribe(e=>{console.log(e)})
   }
   //save localStoratge--
+  total(){
+    sessionStorage.setItem('total', JSON.stringify(this.tot));
+  } 
   mostrar(){
     let  catalogo = sessionStorage.getItem('producto');
     if ( catalogo) {
       this. facturaProductos = JSON.parse( catalogo);
     } else {
       this. facturaProductos = [];
+    }
+     this.tot = sessionStorage.getItem('Total')
+    if(this.tot){
+      this.tot = JSON.parse(this.tot)
     }
   }
 

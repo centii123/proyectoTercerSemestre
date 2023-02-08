@@ -9,8 +9,6 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi">
                 </h3>
                 <h3>Fecha de emision:&nbsp;<input type="text" class="inputi"></h3>
-                <h3>Direccion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi">
-                </h3>
                 <h3>Nro° Factura:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi"></h3>
             </div>
             <div class="cuerpo">
@@ -30,6 +28,7 @@
                             <td>{{ item.nombre_p}}</td>
                             <td>{{ item.cantidades}}</td>
                             <td>{{ item.precio_venta}}</td>
+                            <td>{{ item.total}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -49,7 +48,7 @@
                     <tbody class="tbody1">
                         <tr>
                             <th>Total</th>
-                            <td>100</td>
+                            <td>{{tot}}</td>
                         </tr>
 
                     </tbody>
@@ -57,7 +56,7 @@
 
             </div>
             <hr class="hr1">
-            <input type="submit" value="Cancelado" name="mostrar" (click)="mostrar()">
+        <input type="submit" value="Cancelado" name="mostrar" (click)="mostrar()">
         </main>
 
     </div> 

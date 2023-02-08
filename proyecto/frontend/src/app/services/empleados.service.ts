@@ -7,7 +7,7 @@ import { CreateEmpleadoModel, EmpleadoModel, UpdateEmpleadoModel } from '../mode
   providedIn: 'root'
 })
 export class EmpleadosService {
-  readonly Api_url: string = '/empleados';
+  readonly Api_url: string = 'http://localhost:3000/empleados';
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<EmpleadoModel[]> {

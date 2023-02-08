@@ -5,3 +5,8 @@ export interface proveedorModel{
     direccion: string,
     especializacion: string 
 }
+export interface createproveedorModel extends Omit<proveedorModel,'especializacion'>{
+    id_cat:number,
+
+
+}

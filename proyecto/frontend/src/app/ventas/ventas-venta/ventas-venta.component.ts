@@ -78,14 +78,11 @@ export class VentasVentaComponent {
           }
           
         }
-        for (const i of todo) {
-          
-          
-        }
+
       }
 
       //funcion para redireccionar en angular
-      //this.router.navigate(['/ventas/documento/']);
+      this.router.navigate(['/ventas/documento/']);
       
       
     //localStorage--mostrar
@@ -223,7 +220,7 @@ export class VentasVentaComponent {
 
 
           
-          //this.facturaCreate.registrarFactura(this.facturaIngresar).subscribe()
+
           
   
       }

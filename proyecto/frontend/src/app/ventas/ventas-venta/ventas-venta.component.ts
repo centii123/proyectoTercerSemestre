@@ -82,7 +82,8 @@ export class VentasVentaComponent {
       }
 
       //funcion para redireccionar en angular
-      this.router.navigate(['/ventas/documento/']);
+        //this.router.navigate(['/ventas/documento/'],{});
+      window.open('/ventas/documento/','_blank')
       
       
     //localStorage--mostrar

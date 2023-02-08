@@ -19,6 +19,7 @@ export class VentasVentaComponent {
   productos: any | undefined
   valor:number=1
   suma:number=0
+  tot=0
   private objeto: ProductosModel | null=null;
   constructor(private http:buscarProductos){
   }
@@ -132,7 +133,7 @@ export class VentasVentaComponent {
 
     totales(){
       let suma:number[]=[]
-      let tot=0
+      this.tot=0
         
         for (let item of this.facturaProductos.filter(i => i)) {
           let name = item?.total || 0;
@@ -140,10 +141,10 @@ export class VentasVentaComponent {
         }
 
         for (const i of suma) {
-          tot=tot + i
+          this.tot=this.tot + i
         }
        
-      return tot
+      return this.tot
       
     }
 }

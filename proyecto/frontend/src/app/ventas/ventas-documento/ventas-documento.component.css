@@ -100,3 +100,10 @@ p{
 h3{
     font-size: 18px;
 }
+input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    background: gray;
+    border: none;
+  }

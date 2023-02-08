@@ -1,3 +1,4 @@
+import { FacturaGene } from './../models/facturaGene.entity';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
@@ -15,6 +16,7 @@ export class VentasVentaComponent {
   catalogoProductos:ProductosModel[]=[]
   catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
+  facturaIngresar:FacturaGene | undefined
   precioTotal:number[]=[]
   serch:string=""
   cantidad:number | null=null
@@ -164,6 +166,17 @@ export class VentasVentaComponent {
           let client = [];
         }
       }
-    }
+
+      ingresarfactura(factura:FacturaGene){
+        this.facturaIngresar={
+          total:factura.total,
+          cedula_cliente:factura.cedula_cliente,
+          descripccion:'hola',
+          cantidad:factura.cantidad,
+          tipo_producto:'Medicina',
+          id_prod:factura.id_prod
+        }
+      }
+}
     
 

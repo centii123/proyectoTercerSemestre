@@ -31,7 +31,8 @@ buscarCliente(event:Event){
     sessionStorage.setItem('ciente',JSON.stringify(this.guardar))
 
     this.router.navigate(['/ventas/venta/']);
-  })
+  }) 
 }
+
 
 }

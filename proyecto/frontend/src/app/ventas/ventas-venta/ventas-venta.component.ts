@@ -165,7 +165,7 @@ export class VentasVentaComponent {
         } else {
           let client = [];
         }
-      }
+      } 
 
       /*ingresarfactura(factura: FacturaGene) {
         for(element => {
@@ -179,9 +179,6 @@ export class VentasVentaComponent {
           };
         });
       }*/
-    
-    
-    
     
 
 }

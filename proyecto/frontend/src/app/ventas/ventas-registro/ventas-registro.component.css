@@ -27,7 +27,7 @@ footer{
 }
 .registro{
     width: 500px; /*30vw*/
-    height: 65vh;
+    height: 60vh;
     background-color: #bbbbbb;
     display: flex;
     flex-direction: column;
@@ -71,4 +71,20 @@ footer{
 .atras-boton{
     color: black;
     background-color: rgb(179, 179, 179);
+} 
+.alerta{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+.mensaje{
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    margin-left: 75%;
+    background: greenyellow;
+    font-size: 20px;
+   text-align: center;
 }

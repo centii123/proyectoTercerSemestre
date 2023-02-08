@@ -55,8 +55,10 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
-    sape() {
-      sessionStorage.setItem('producto', JSON.stringify(this.catalogoP));
+
+    save() {
+      sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
+
     //localStorage--mostrar
     }
  
@@ -126,10 +128,13 @@ export class VentasVentaComponent {
           
         }
       }
-      
-
     }
 
-    
+    totales(){
+      let suma=this.facturaProductos.length
+      console.log(suma)
+      
 
+      
+    }
 }

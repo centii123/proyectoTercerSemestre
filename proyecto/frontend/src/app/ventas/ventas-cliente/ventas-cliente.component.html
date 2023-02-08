@@ -17,7 +17,7 @@
                             </div>  
                             <ng-template #hola>
                                 <div *ngFor="let a of client">
-                                    <div class="selector">{{a.cedula_cliente}} {{a.nombres}}</div>
+                                    <li class="selector" value="{{a.cedula_client}}">{{a.cedula_cliente}} {{a.nombres}}</li>
                                 </div>
                             </ng-template>
                         </div>

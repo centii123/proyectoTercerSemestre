@@ -6,9 +6,9 @@ import { ClienteServices } from '../services/cliente.services';
   selector: 'app-ventas-documento',
   templateUrl: './ventas-documento.component.html',
   styleUrls: ['./ventas-documento.component.css']
-})
+}) 
 export class VentasDocumentoComponent {
-  catalogo:ProductosModel[]=[]
+  catalogoP:ProductosModel[]=[]
   constructor(private http:ClienteServices){}
   consultarCli(){
     const url = 'localhost:3000/factura'
@@ -18,9 +18,9 @@ export class VentasDocumentoComponent {
   mostrar(){
     let  catalogo = sessionStorage.getItem('producto');
     if ( catalogo) {
-      this. catalogo = JSON.parse( catalogo);
+      this. catalogoP = JSON.parse( catalogo);
     } else {
-      this. catalogo = [];
+      this. catalogoP = [];
     }
   }
 

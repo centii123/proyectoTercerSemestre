@@ -7,7 +7,7 @@ import { proveedorModel } from '../models/proveedores.model';
   providedIn: 'root'
 })
 export class ProveedoresService {
-  readonly Api_url: string = '/proveedores';
+  readonly Api_url: string = 'http://localhost:3000/proveedores';
   constructor(private httpClient : HttpClient) {
     
    }

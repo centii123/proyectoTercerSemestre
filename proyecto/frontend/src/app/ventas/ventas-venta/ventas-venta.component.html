@@ -50,18 +50,11 @@
                 <tbody class="cuerpo">
                     
                         <tr *ngFor="let i of facturaProductos" >
-                                <td>{{i.id_prod}}</td>
-                                <td class="centrar"><input  type="number" value="{{i.cantidades}}" (change)="canti($event)" class="cantidad" min="1" #cantidad></td>
+                                <td id="idproduct">{{i.id_prod}}</td>
+                                <td class="centrar"><input  type="number" value="{{i.cantidades}}"  (change)="numas($event)" class="cantidad" min="1"></td>
                                 <td>{{i.nombre_p}}</td>
                                 <td>{{i.total}}</td>
-
-                                
-                                
                         </tr>
-
-                    
-
-
                 </tbody>
             </table>
 
@@ -72,7 +65,7 @@
                     <tr>
                     <tr>
                         <th>Total</th>
-                        <td class="tota">100</td>
+                        <td class="tota">{{totales()}}</td>
                     </tr>
 
                 </thead>
@@ -90,11 +83,11 @@
         </div>
         {{ selectProducts | json }}
         <div class="compra">
-            <input type="submit" value="Comprar" class="comprar" (click)="save()">
+            <input type="submit" value="Comprar" class="comprar" (click)="sape()">
             <input type="submit" value="Cancelar" class="cancelar">
         </div>
  
-    </main>
+    </main> 
 
     <!--<footer class="footer">
     </footer>-->

@@ -10,6 +10,7 @@ import { buscarProductos } from '../services/productos.services';
 export class VentasVentaComponent {
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
+  catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
   serch:string=""
   cantidad:number | null=null
@@ -36,6 +37,7 @@ export class VentasVentaComponent {
       stock:productos.stock,
       stock_min:productos.stock_min,
       cantidades:cantidad,
+      precio_venta:precio,
       total:precio 
       
     }
@@ -51,11 +53,13 @@ export class VentasVentaComponent {
         this.productos=e
       })
   }
-
+ 
     //localStorage---guardar
+
     save() {
-      const currentValue = sessionStorage.getItem('producto');
-      sessionStorage.setItem('producto', JSON.stringify(this.catalogoProductos));
+      sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
+
+    //localStorage--mostrar
     }
  
     //seleccion de productos
@@ -66,9 +70,12 @@ export class VentasVentaComponent {
           return productopedido.id_prod === a;
         });
         if (hola != undefined) {
-          console.log('existe')
+          if(hola.cantidades && hola.total){
+            hola.cantidades++
+            
+            hola.total=hola.precio_venta * hola.cantidades
+          }
 
-          
           
         } else {
           this.cantidad = 1;
@@ -85,22 +92,49 @@ export class VentasVentaComponent {
       let valor=html.value
       this.selectProducts.push(valor)
       this.obtenerProductos(valor)
-      
+      this.serch=""
       
       
     }
-
     
     convertirnum(num:string){
       let numero=parseFloat(num)
       return numero
     }
 
-    canti(event:Event){
-      let targe=event.target as HTMLInputElement
-      let cantidad=targe.value
-      let canvernum= parseInt(cantidad)
-      this.cantidadUno= canvernum
+    numas(event:Event){
+      let target=event.target as HTMLInputElement
+      let valor= target.value
+      let num=this.convertirnum(valor)
+      if(num>=1){
+        let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+      let id_prodnum:number
+      if(id_prod){
+        id_prodnum=this.convertirnum(id_prod)
+      }
+      
+      console.log(valor)
+      
+
+      let hola = this.facturaProductos.find(productopedido => {
+        return productopedido.id_prod === id_prodnum;
+      });
+        if (hola != undefined) {
+          if(hola.cantidades && hola.total){
+            hola.cantidades= num
+            hola.total=num * hola.precio_venta
+          }
+
+          
+        }
+      }
     }
 
+    totales(){
+      let suma=this.facturaProductos.length
+      console.log(suma)
+      
+
+      
+    }
 }

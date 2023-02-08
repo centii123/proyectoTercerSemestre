@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Get } from '@nestjs/common';
+import { rol } from 'src/dataBase/rol.entity';
 import { CreateEmpleadosDto } from './dto/create-empleado.dto';
 import { EmpleadosService } from './empleados.service';
 

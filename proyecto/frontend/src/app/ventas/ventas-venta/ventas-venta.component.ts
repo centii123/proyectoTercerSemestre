@@ -9,6 +9,8 @@ import { buscarProductos } from '../services/productos.services';
   styleUrls: ['./ventas-venta.component.css']
 })
 export class VentasVentaComponent {
+  cedula_cliente:string | undefined
+  nombre_cliente:string | undefined
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
   catalogoP:ProductosModel[]=[]
@@ -27,7 +29,7 @@ export class VentasVentaComponent {
   
   ngOnInit():void{
     //this.busqueda()
-
+  this.cliente()
   }
 
   producto(cantidad:number,productos:ProductosModel){
@@ -149,5 +151,19 @@ export class VentasVentaComponent {
       return this.tot
       
     }
+
+    cliente(){
+     let storage = sessionStorage.getItem('ciente')
+      if(storage){
+          let client = JSON.parse( storage);
+          console.log(client)
+          this.cedula_cliente=client[0].cedula_cliente 
+          console.log(this.cedula_cliente)
+          this.nombre_cliente=`${client[0].nombres} ${client[0].apellido}`
+        } else {
+          let client = [];
+        }
+      }
+    }
     
-}
+

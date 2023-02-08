@@ -167,16 +167,23 @@ export class VentasVentaComponent {
         }
       }
 
-      ingresarfactura(factura:FacturaGene){
-        this.facturaIngresar={
-          total:factura.total,
-          cedula_cliente:factura.cedula_cliente,
-          descripccion:'hola',
-          cantidad:factura.cantidad,
-          tipo_producto:'Medicina',
-          id_prod:factura.id_prod
-        }
-      }
+      /*ingresarfactura(factura: FacturaGene) {
+        for(element => {
+          this.facturaIngresar = {
+            total: element.total,
+            cedula_cliente: element.cedula_cliente,
+            descripccion: 'hola',
+            cantidad: element.cantidad,
+            tipo_producto: 'Medicina',
+            id_prod: element.id_prod
+          };
+        });
+      }*/
+    
+    
+    
+    
+
 }
     
 

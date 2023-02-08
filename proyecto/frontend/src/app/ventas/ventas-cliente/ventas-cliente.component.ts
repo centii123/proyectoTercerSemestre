@@ -20,5 +20,13 @@ clienteBuscador(event:Event){
   })
   
 }
+buscarCliente(event:Event){
+  let evento = event.target as HTMLLIElement
+  let valor=evento.value
+  let string=JSON.stringify(valor)
+  this.clienteSer.buscarCliente(string).subscribe(e=>{
+    console.log(e)
+  })
+}
 
 }

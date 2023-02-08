@@ -57,9 +57,8 @@ export class VentasVentaComponent {
  
     //localStorage---guardar
 
-    save() {
+    sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
-
     //localStorage--mostrar
     }
  

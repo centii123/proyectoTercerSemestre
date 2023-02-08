@@ -19,9 +19,6 @@ export class detalle_venta {
   @Column({ type: 'int' })
   cantidad: number;
 
-  @Column({ type: 'decimal' })
-  iva_producto: number;
-
   @Column({ type: 'varchar', length: 100 })
   tipo_producto: string;
 

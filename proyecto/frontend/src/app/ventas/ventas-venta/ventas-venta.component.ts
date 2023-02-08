@@ -1,3 +1,4 @@
+import { FacturaServices } from './../services/factura.services';
 import { FacturaGene } from './../models/facturaGene.entity';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -26,7 +27,7 @@ export class VentasVentaComponent {
   suma:number=0
   tot=0
   private objeto: ProductosModel | null=null;
-  constructor(private http:buscarProductos, private router:Router){
+  constructor(private http:buscarProductos, private router:Router, private facturaCreate:FacturaServices){
   }
   
   ngOnInit():void{
@@ -65,8 +66,22 @@ export class VentasVentaComponent {
     sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
       sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
+      //ingresar datos
+      let productstorage=sessionStorage.getItem('producto')
+      if(productstorage){
+        let todo=JSON.parse(productstorage)
+        for (const i of todo) {
+          if(this.cedula_cliente){
+            this.ingresarfactura(i,this.cedula_cliente)
+          }
+          
+        }
+      }
+
       //funcion para redireccionar en angular
-      this.router.navigate(['/ventas/documento/']);
+      //this.router.navigate(['/ventas/documento/']);
+      
+      
     //localStorage--mostrar
     }
  
@@ -167,18 +182,21 @@ export class VentasVentaComponent {
         }
       } 
 
-      /*ingresarfactura(factura: FacturaGene) {
-        for(element => {
+
+      ingresarfactura(element:any,cedula:string) {
+
           this.facturaIngresar = {
             total: element.total,
-            cedula_cliente: element.cedula_cliente,
-            descripccion: 'hola',
-            cantidad: element.cantidad,
-            tipo_producto: 'Medicina',
+            cedula_cliente: cedula,
+            descripccion: "papa",
+            cantidad: element.cantidades,
+            tipo_producto: "me como",
             id_prod: element.id_prod
           };
-        });
-      }*/
+          this.facturaCreate.registrarFactura(this.facturaIngresar).subscribe()
+          console.log(this.facturaIngresar)
+  
+      }
     
 
 }

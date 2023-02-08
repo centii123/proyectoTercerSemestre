@@ -8,20 +8,19 @@ import { FacturaGene } from "../models/facturaGene.entity";
 })
 export class FacturaServices{
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+       
     }
     readonly api = 'http://localhost:3000/factura'
 
     constructor(private http:HttpClient){}
 
-    registrarFactura(registro:FacturaModel){
-        const url = '${this.api}';
-        return this.http.post(url,registro)
+    registrarFactura(registro:any){
+        return this.http.post(this.api,registro)
     }
 
-    registrarId(registro:FacturaGene){
+    /*registrarId(registro:FacturaGene){
         const url = '${this.api}';
         return this.http.post(url,registro)
-    }
+    }*/
      
 }

@@ -22,7 +22,6 @@ export class FacturaController {
         this.datosregisterdetalleVenta={
             descripccion:datos['descripccion'],
             cantidad:datos['cantidad'],
-            iva_producto:datos['iva_producto'],
             tipo_producto:datos['tipo_producto'],
             id_prod:datos['id_prod'],
         }

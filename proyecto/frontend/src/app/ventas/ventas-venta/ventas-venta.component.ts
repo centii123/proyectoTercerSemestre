@@ -10,7 +10,7 @@ import { buscarProductos } from '../services/productos.services';
 export class VentasVentaComponent {
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
-  catalogo:ProductosModel[]=[]
+  catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
   serch:string=""
   cantidad:number | null=null
@@ -55,8 +55,8 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
-    save() {
-      sessionStorage.setItem('producto', JSON.stringify(this.catalogoProductos));
+    sape() {
+      sessionStorage.setItem('producto', JSON.stringify(this.catalogoP));
     //localStorage--mostrar
     }
  

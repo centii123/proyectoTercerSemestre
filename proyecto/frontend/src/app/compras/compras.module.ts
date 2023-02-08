@@ -9,6 +9,8 @@ import { RegistroProveedorComponent } from './registro-proveedor/registro-provee
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListarCategoriaComponent } from './listar-categoria/listar-categoria.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -25,7 +27,10 @@ import { ListarCategoriaComponent } from './listar-categoria/listar-categoria.co
   ],
   imports: [
     CommonModule,
-    ComprasRoutingModule
+    ComprasRoutingModule,
+    FormsModule,
+    RouterModule
   ],
+
 })
 export class ComprasModule { }

@@ -1,4 +1,6 @@
+import { FacturaGene } from './../models/facturaGene.entity';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
 import { buscarProductos } from '../services/productos.services';
 
@@ -8,31 +10,43 @@ import { buscarProductos } from '../services/productos.services';
   styleUrls: ['./ventas-venta.component.css']
 })
 export class VentasVentaComponent {
+  cedula_cliente:string | undefined
+  nombre_cliente:string | undefined
   selectProducts:number[]=[]
   catalogoProductos:ProductosModel[]=[]
+  catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
+  facturaIngresar:FacturaGene | undefined
+  precioTotal:number[]=[]
   serch:string=""
-  cantidad:number | undefined
+  cantidad:number | null=null
+  cantidadUno:number | null=null
   productos: any | undefined
   valor:number=1
   suma:number=0
-  private objeto!: ProductosModel;
-  constructor(private http:buscarProductos){
+  tot=0
+  private objeto: ProductosModel | null=null;
+  constructor(private http:buscarProductos, private router:Router){
   }
   
   ngOnInit():void{
     //this.busqueda()
-
+  this.cliente()
   }
 
   producto(cantidad:number,productos:ProductosModel){
+   
+    let precio=this.convertirnum(productos.precio_venta)
+    
     this.objeto={
       id_prod:productos.id_prod,
       nombre_p:productos.nombre_p,
       stock:productos.stock,
       stock_min:productos.stock_min,
-      total:productos.precio_venta,
-      cantidad:cantidad
+      cantidades:cantidad,
+      precio_venta:precio,
+      total:precio 
+      
     }
     this.facturaProductos.push(this.objeto)
     console.log(this.facturaProductos)
@@ -46,11 +60,14 @@ export class VentasVentaComponent {
         this.productos=e
       })
   }
-
+ 
     //localStorage---guardar
-    save() {
-      const currentValue = sessionStorage.getItem('producto');
-      sessionStorage.setItem('producto', JSON.stringify(this.catalogoProductos));
+    sape() {
+      sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
+      sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
+      //funcion para redireccionar en angular
+      this.router.navigate(['/ventas/documento/']);
+    //localStorage--mostrar
     }
  
     //seleccion de productos
@@ -60,8 +77,14 @@ export class VentasVentaComponent {
         let hola = this.facturaProductos.find(productopedido => {
           return productopedido.id_prod === a;
         });
-        if (hola !== undefined) {
-          hola.cantidad 
+        if (hola != undefined) {
+          if(hola.cantidades && hola.total){
+            hola.cantidades++
+            
+            hola.total=hola.precio_venta * hola.cantidades
+          }
+
+          
         } else {
           this.cantidad = 1;
           this.producto(this.cantidad, e);
@@ -77,20 +100,83 @@ export class VentasVentaComponent {
       let valor=html.value
       this.selectProducts.push(valor)
       this.obtenerProductos(valor)
-      
+      this.serch=""
       
       
     }
-
-   
-
-
-    convertirNum(hola:string,cantidad:string){
-      this.suma=0
-      let num= parseFloat(hola)
-      let num2=parseInt(cantidad)
-      let suma=num * num2
-      this.suma= suma
+    
+    convertirnum(num:string){
+      let numero=parseFloat(num)
+      return numero
     }
 
+    numas(event:Event){
+      let target=event.target as HTMLInputElement
+      let valor= target.value
+      let num=this.convertirnum(valor)
+      if(num>=1){
+        let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+      let id_prodnum:number
+      if(id_prod){
+        id_prodnum=this.convertirnum(id_prod)
+      }
+      
+      console.log(valor)
+      
+
+      let hola = this.facturaProductos.find(productopedido => {
+        return productopedido.id_prod === id_prodnum;
+      });
+        if (hola != undefined) {
+          if(hola.cantidades && hola.total){
+            hola.cantidades= num
+            hola.total=num * hola.precio_venta
+          }
+
+          
+        }
+      }
+    }
+
+    totales(){
+      let suma:number[]=[]
+      this.tot=0
+        
+        for (let item of this.facturaProductos.filter(i => i)) {
+          let name = item?.total || 0;
+          suma.push(name)
+        }
+
+        for (const i of suma) {
+          this.tot=this.tot + i
+        }
+      return this.tot
+      
+    }
+
+    cliente(){
+     let storage = sessionStorage.getItem('ciente')
+      if(storage){
+          let client = JSON.parse( storage);
+          console.log(client)
+          this.cedula_cliente=client[0].cedula_cliente 
+          console.log(this.cedula_cliente)
+          this.nombre_cliente=`${client[0].nombres} ${client[0].apellido}`
+        } else {
+          let client = [];
+        }
+      }
+
+      ingresarfactura(factura:FacturaGene){
+        this.facturaIngresar={
+          total:factura.total,
+          cedula_cliente:factura.cedula_cliente,
+          descripccion:'hola',
+          cantidad:factura.cantidad,
+          tipo_producto:'Medicina',
+          id_prod:factura.id_prod
+        }
+      }
 }
+    
+

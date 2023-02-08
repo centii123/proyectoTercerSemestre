@@ -98,4 +98,10 @@ background-color: black;
 color: white;
 width: 100%;
 }
+.selector{
+    cursor: pointer;
 
+}
+.selector:hover{
+    background-color: gray;
+}

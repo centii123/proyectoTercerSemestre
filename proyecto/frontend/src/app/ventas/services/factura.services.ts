@@ -9,7 +9,7 @@ export class FacturaServices{
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }
-    readonly api = 'localhost:3000/factura'
+    readonly api = 'http://localhost:3000/factura'
 
     constructor(private http:HttpClient){}
 

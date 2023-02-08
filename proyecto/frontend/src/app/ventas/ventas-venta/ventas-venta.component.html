@@ -9,13 +9,13 @@
             <h3>Ventas</h3>
         </div>
         <div class="datos">
-            <input type="text" class="cedula" placeholder="Cedula">
-            <input type="text" class="cliente" placeholder="Cliente">
+            <input type="text" class="cedula" placeholder="Cedula" readonly="false" [value]="cedula_cliente">
+            <input type="text" class="cliente" placeholder="Cliente" readonly="false" [value]="nombre_cliente">
         </div>
         <div class="buscar">
             <input type="text" placeholder="Buscar producto" [value]="serch" #guardarLocalStorage (keyup)="busqueda($event)" >
 
-            <div class="buscadorProduct" >
+            <div class="buscadorProduct" > 
                 <div *ngIf="serch">
                     <div *ngIf="!productos.message else mas">
                         <div *ngFor="let a of productos">
@@ -23,7 +23,7 @@
                              <li class="selector" value="{{a.id_prod}}" (click)="selectP($event)" >{{a.nombre_p}} {{a.stock}}</li>     
                             </div>                    
                         </div>
-                    </div>
+                    </div> 
                     <ng-template #mas>
                         
                         <div>no encontrado</div>   
@@ -49,19 +49,12 @@
                 </thead>
                 <tbody class="cuerpo">
                     
-                        <tr *ngFor="let i of catalogoProductos" >
-                                <td>{{i.id_prod}}</td>
-                                <td class="centrar"><input  type="number" [value]="valor" class="cantidad" min="1" #cantidad></td>
+                        <tr *ngFor="let i of facturaProductos" >
+                                <td id="idproduct">{{i.id_prod}}</td>
+                                <td class="centrar"><input  type="number" value="{{i.cantidades}}"  (change)="numas($event)" class="cantidad" min="1"></td>
                                 <td>{{i.nombre_p}}</td>
-                                <td>{{i.precio_venta}}</td>
-
-                                
-                                
+                                <td>{{i.total}}</td>
                         </tr>
-
-                    
-
-
                 </tbody>
             </table>
 
@@ -72,7 +65,7 @@
                     <tr>
                     <tr>
                         <th>Total</th>
-                        <td class="tota">100</td>
+                        <td class="tota">{{totales()}}</td>
                     </tr>
 
                 </thead>
@@ -90,11 +83,11 @@
         </div>
         {{ selectProducts | json }}
         <div class="compra">
-            <input type="submit" value="Comprar" class="comprar" (click)="save()">
+            <input type="submit" value="Comprar" class="comprar" (click)="sape()">
             <input type="submit" value="Cancelar" class="cancelar">
         </div>
  
-    </main>
+    </main> 
 
     <!--<footer class="footer">
     </footer>-->

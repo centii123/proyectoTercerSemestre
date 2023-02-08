@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CreateEmpleadoModel, EmpleadoModel, UpdateEmpleadoModel } from 'src/app/models/empleado.model';
 import { RolModel } from 'src/app/models/rol.model';
 import { EmpleadosService } from 'src/app/services/empleados.service';
@@ -14,9 +15,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     //this.getRoles()
   }
-  constructor(private empleadosService: EmpleadosService,private rolesService: RolesService){}
+  constructor(private empleadosService: EmpleadosService,private rolesService: RolesService,private router: Router) {}
   roles: RolModel[] = [{id_rol: 1, descripcion: 'Rol1'}];
-  
+
   empleado: CreateEmpleadoModel = {
     cedula_empleados: 0,
     nombres:'',
@@ -31,11 +32,12 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  
+
   register(empleado:CreateEmpleadoModel){
     try {
       if (empleado.clave === this.claveV) {
         this.registerEmpleado(empleado)
+        this.router.navigate(['empleados/login']);
       }else {
         throw new Error("La contraseña no coincide");
       }

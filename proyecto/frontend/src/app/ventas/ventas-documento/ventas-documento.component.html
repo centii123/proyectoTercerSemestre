@@ -6,11 +6,12 @@
             <hr>
             <div class="informacion">
                 <h3>Cliente:
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi" [readonly]="true" [value]="nombre_cliente">
+                </h3>
+                <h3>Cedula:
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi" [readonly]="true" [value]="cedula_cliente">
                 </h3>
                 <h3>Fecha de emision:&nbsp;<input type="text" class="inputi"></h3>
-                <h3>Direccion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi">
-                </h3>
                 <h3>Nro° Factura:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="inputi"></h3>
             </div>
             <div class="cuerpo">
@@ -25,10 +26,11 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        <tr>
-                            <td>1</td>
-                            <td>pastillas</td>
-                            <td>2</td>
+                        <tr *ngFor="let item of facturaProductos">
+                            <td>{{ item.id_prod}}</td>
+                            <td>{{ item.nombre_p}}</td>
+                            <td>{{ item.cantidades}}</td>
+                            <td>{{ item.precio_venta}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,7 +50,7 @@
                     <tbody class="tbody1">
                         <tr>
                             <th>Total</th>
-                            <td>100</td>
+                            <td>{{tot}}</td>
                         </tr>
 
                     </tbody>
@@ -56,7 +58,7 @@
 
             </div>
             <hr class="hr1">
-            <p>Cancelado</p>
+        <input type="submit" value="Cancelado" name="mostrar">
         </main>
 
-    </div>
+    </div> 

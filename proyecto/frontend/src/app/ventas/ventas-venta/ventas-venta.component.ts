@@ -12,6 +12,7 @@ export class VentasVentaComponent {
   catalogoProductos:ProductosModel[]=[]
   catalogo:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
+  precioTotal:number[]=[]
   serch:string=""
   cantidad:number | null=null
   cantidadUno:number | null=null
@@ -129,10 +130,19 @@ export class VentasVentaComponent {
     }
 
     totales(){
-      let suma=this.facturaProductos.length
-      console.log(suma)
-      
+      let suma:number[]=[]
+      let tot=0
+        
+        for (let item of this.facturaProductos.filter(i => i)) {
+          let name = item?.total || 0;
+          suma.push(name)
+        }
 
+        for (const i of suma) {
+          tot=tot + i
+        }
+       
+      return tot
       
     }
 }

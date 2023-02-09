@@ -8,8 +8,14 @@ import { CategoriasModel } from '../models/listar-categorias.model';
 })
 export class CategoriasService {
   readonly Api_url: string = 'http://localhost:3000/categorias';
-
   constructor(private httpClient: HttpClient) { }
+
+  store(categorias: CategoriasModel):Observable<CategoriasModel>{
+    const url = `${this.Api_url}`;
+    const response = this.httpClient.post<CategoriasModel>(url, categorias);
+    return response;
+  }
+
   getAll(): Observable<CategoriasModel[]> {
     const url = `${this.Api_url}`;
     const response = this.httpClient.get<CategoriasModel[]>(url);

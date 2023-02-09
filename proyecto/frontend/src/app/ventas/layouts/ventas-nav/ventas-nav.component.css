@@ -5,15 +5,15 @@
     list-style: none;
     box-sizing: border-box;
 }
-
 nav{
     background: #BDDFFF;
     height: 13vh;
     width: 100%;
+    padding: none;
+    margin: none;
 }
 .enlace{
     position: absolute;
-    padding: 20px 50px;
 }
 .logo{
     height: 40px;

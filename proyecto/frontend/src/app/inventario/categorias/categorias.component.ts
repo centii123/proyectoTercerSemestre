@@ -19,5 +19,13 @@ export class CategoriasComponent {
   router: any;
   constructor (private categoriasService: CategoriasService){}
 
+  updateCategorias() {
+    const response = this.categoriasService
+      .categoriasUpdate(this.updateProd,this.updateProd.id_prod)
+      .subscribe((response)=>{
+        console.log(response)
+      })
+  }
+
 }
 

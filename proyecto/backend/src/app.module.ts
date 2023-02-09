@@ -14,9 +14,8 @@ import { InventarioModule } from './inventario/inventario.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123',
-      database: 'proyecto2',
-
+      password: '1234',
+      database: 'Proyecto',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),

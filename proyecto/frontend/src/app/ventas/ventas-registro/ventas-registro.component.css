@@ -77,14 +77,26 @@ footer{
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-start;
 }
-.mensaje{
+.registrado {
     margin: 0;
     padding: 0;
     width: 25%;
     margin-left: 75%;
     background: greenyellow;
     font-size: 20px;
-   text-align: center;
-}
+    text-align: center;
+    border-radius: 5px;  
+    border: 1px solid black;
+  }
+  .sin_registrar {
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    margin-left: 75%;
+    background: rgba(255, 0, 0, 0.534);
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;   
+    border: 1px solid black;
+  }

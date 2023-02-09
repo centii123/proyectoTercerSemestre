@@ -15,9 +15,7 @@ nav{
 .enlace{
     position: absolute;
 }
-.logo{
-    height: 40px;
-}
+
 nav ul{
     float: right;
     margin-right: 20px;

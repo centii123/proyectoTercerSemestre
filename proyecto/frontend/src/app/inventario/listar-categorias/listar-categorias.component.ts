@@ -20,5 +20,12 @@ export class ListarCategoriasComponent {
     const response = this.categoriasService.getAll().subscribe((response) => {
       this.categorias = response;
     });
+   }
+    deleteCat(id:number){
+      console.log(id)
+      const response = this.categoriasService.delete(id).subscribe((response) => {
+        this.categorias =this.categorias.filter(categorias => categorias.id_cat != id)
+      });
+    }
 }
-}
+

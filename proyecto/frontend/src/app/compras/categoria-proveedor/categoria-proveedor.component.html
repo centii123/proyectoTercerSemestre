@@ -7,10 +7,9 @@
       <div class="titulos">
         <h2>Registro de Categorias</h2>
       </div><br>
-      <form action="" class="formulario">
-        <input type="number" class="input" placeholder="id proveedor"><br><br>
-        <input type="text" class="input" placeholder="especialización"><br><br>
-        <input type="submit" id="boton" value="guardar" class="boton">
+      <form action="" class="formulario" > 
+        <input [(ngModel)]="registro.especializacion" name="esp" type="text" class="input" placeholder="especialización"><br><br>
+        <input (click)="registroC(registro)" type="submit" name="boton" id="boton" value="guardar" class="boton">
       </form>
     </div>
 

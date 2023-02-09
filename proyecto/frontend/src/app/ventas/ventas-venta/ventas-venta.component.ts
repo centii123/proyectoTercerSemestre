@@ -211,8 +211,8 @@ export class VentasVentaComponent {
           this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
         }
           this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
-            
-            let numDocumento= await Object.values(e)[0]['id_documento_venta'] 
+            let numDocumento= null
+            numDocumento= await Object.values(e)[0]['id_documento_venta'] 
             if(iteracion===0){
               localStorage.setItem('id_documento_venta',numDocumento)
             }
@@ -227,7 +227,7 @@ export class VentasVentaComponent {
             
             this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
             
-  
+            
           })
         }
 

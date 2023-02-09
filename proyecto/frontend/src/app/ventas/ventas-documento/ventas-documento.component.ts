@@ -9,10 +9,12 @@ import { ProductosModel } from '../models/productos.entity';
 }) 
 export class VentasDocumentoComponent implements OnInit{
   ngOnInit(): void {
+    
     this.cliente()
     this.mostrar()
-    this.facturanum()
-    this.fechaextra()
+    
+
+   
   }
   cedula_cliente:string | undefined
   nombre_cliente:string | undefined
@@ -50,20 +52,14 @@ export class VentasDocumentoComponent implements OnInit{
          this.cedula_cliente=client[0].cedula_cliente 
          console.log(this.cedula_cliente)
          this.nombre_cliente=`${client[0].nombres} ${client[0].apellido}`
+         this.facturanum()
        } else {
          let client = [];
        }
      }
 
     facturanum(){
-      let storage=sessionStorage.getItem('id_documento_venta')
-      if(storage){
-        this.id_factura=storage
-      }
-    }
-
-    fechaextra(){
-      let storage=sessionStorage.getItem('id_documento_venta')
+      let storage=localStorage.getItem('id_documento_venta')
       if(storage){
         this.id_factura=storage
       }
@@ -71,7 +67,6 @@ export class VentasDocumentoComponent implements OnInit{
         let num=parseInt(this.id_factura)
         this.fecha(num)
       }
-      
     }
 
     fecha(num:number){

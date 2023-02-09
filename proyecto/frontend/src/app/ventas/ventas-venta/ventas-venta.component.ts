@@ -85,8 +85,9 @@ export class VentasVentaComponent {
       }
 
       //funcion para redireccionar en angular
-        this.router.navigate(['/ventas/documento/']);
-      //window.open('/ventas/documento/','_blank')
+      this.router.navigate(['/ventas/inicio/']);
+      
+      window.open('/ventas/documento/','_blank')
       
       
     //localStorage--mostrar
@@ -202,22 +203,22 @@ export class VentasVentaComponent {
           this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
         }
           this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
+            
+            let numDocumento= await Object.values(e)[0]['id_documento_venta']
             if(iteracion===0){
-              this.numDocumento= await Object.values(e)[0]['id_documento_venta'] + 1
-            }else{
-              this.numDocumento= await Object.values(e)[0]['id_documento_venta']
+              localStorage.setItem('id_documento_venta',numDocumento)
             }
             this.facturaIngresarDetalle = {
               descripccion: "papa",
               cantidad: element.cantidades,
               tipo_producto: "me como",
               id_prod: element.id_prod,
-              id_documento_venta:this.numDocumento
+              id_documento_venta:numDocumento
             };
             console.log(this.facturaIngresarDetalle)
             
             this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
-            sessionStorage.setItem('id_documento_venta',this.numDocumento)
+            
   
           })
         }

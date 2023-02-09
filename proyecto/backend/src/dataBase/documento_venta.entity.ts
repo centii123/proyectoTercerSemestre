@@ -18,7 +18,7 @@ export class documento_venta {
   @Column({ type: 'date', default: () => 'NOW()' })
   fecha: Date;
 
-  @Column({ type: 'decimal' })
+  @Column({ type: 'int' })
   total: number;
 
   @ManyToOne(() => cliente, (Cliente) => Cliente.id_documento_venta, {

@@ -152,3 +152,9 @@ outline: none;
     .selector:hover{
         background-color: gray;
     }
+    .eliminar, .eliminar:hover{
+        margin: 2px;
+        padding: 3px;
+        border-radius: 5px;
+    }
+    

@@ -227,6 +227,36 @@ export class VentasVentaComponent {
   
           })
         }
+        eliminar(event:Event){
+          let target=event.target as HTMLInputElement
+          let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+
+          if(id_prod){
+            let numid=this.convertirnum(id_prod)
+            console.log(this.facturaProductos)
+            let numelimi=0;
+            for (let i = 0; i < this.facturaProductos.length; i++) {
+              if(this.facturaProductos[i].id_prod==numid){
+                numelimi=i
+              }
+              
+            }
+            if(numelimi==0){
+              this.facturaProductos.splice(0,1)
+            }
+            if(numelimi){
+              this.facturaProductos.splice(numelimi,1)
+              console.log(numelimi)
+            }
+            
+
+
+            //targeta.remove()
+            
+          }
+         
+
+        }
 
       }
     

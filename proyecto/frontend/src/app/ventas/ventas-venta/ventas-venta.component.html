@@ -45,6 +45,7 @@
                         <th>Cantidad</th>
                         <th>Productos</th>
                         <th>Precio</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody class="cuerpo">
@@ -54,6 +55,7 @@
                                 <td class="centrar"><input  type="number" value="{{i.cantidades}}"  (change)="numas($event)" class="cantidad" min="1"></td>
                                 <td>{{i.nombre_p}}</td>
                                 <td>{{i.total}}</td>
+                                <td><button class="cancelar eliminar" (click)="eliminar($event)">Eliminar</button></td>
                         </tr>
                 </tbody>
             </table>

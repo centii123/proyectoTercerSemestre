@@ -1,10 +1,11 @@
 <app-ventas>
 <div class="contenedor">
-    <!--<nav class="nav">
-
+    <div class="alert">
+        <h3 [ngClass]="{'cancelado': cancelado === 'Info! Su pedido se ha cancelado.', 'comprado': comprado === 'Su compra se ha realizado con exito'}">{{cancelado}}{{comprado}}</h3>
+    </div>
+    <!--<nav class="nav"> 
     </nav>-->
     <main class="main">
-
         <div class="ventas">
             <h3>Ventas</h3>
         </div>
@@ -84,9 +85,9 @@
         {{ selectProducts | json }}
         <div class="compra">
             <input type="submit" value="Comprar" class="comprar" (click)="sape()">
-            <input type="submit" value="Cancelar" class="cancelar" routerLink="/ventas/cliente">
+            <input type="submit" value="Cancelar" class="cancelar" (click)="cancelar()">
         </div>
- 
+  
     </main> 
 
     <!--<footer class="footer">

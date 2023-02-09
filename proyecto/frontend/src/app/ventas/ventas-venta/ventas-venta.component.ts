@@ -68,6 +68,7 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
+    comprado=''
     async sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
       sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
@@ -84,10 +85,12 @@ export class VentasVentaComponent {
 
       }
 
-      //funcion para redireccionar en angular
+      //funcion para redireccionar en angular y para alertas    
+      this.comprado='Su compra se ha realizado con exito'
+      setTimeout(() => {
       this.router.navigate(['/ventas/inicio/']);
-      
       window.open('/ventas/documento/','_blank')
+      }, 3000);
       
       
     //localStorage--mostrar
@@ -226,6 +229,13 @@ export class VentasVentaComponent {
             
   
           })
+        }
+        cancelado = '';
+        cancelar() {
+          this.cancelado = `Info! Su pedido se ha cancelado.`;
+          setTimeout(() => {
+            this.router.navigate(['/ventas/cliente/']);
+          }, 2000);
         }
 
       }

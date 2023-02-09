@@ -1,4 +1,5 @@
-import { FacturaGene } from './../models/facturaGene.entity';
+import { FacturaServices } from './../services/factura.services';
+import { FacturaGeneDetalle, FacturaGeneDocumento } from './../models/facturaGene.entity';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
@@ -13,10 +14,12 @@ export class VentasVentaComponent {
   cedula_cliente:string | undefined
   nombre_cliente:string | undefined
   selectProducts:number[]=[]
+  numDocumento:any
   catalogoProductos:ProductosModel[]=[]
   catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
-  facturaIngresar:FacturaGene | undefined
+  facturaIngresarDetalle:FacturaGeneDetalle | undefined
+  facturaIngresarDocumento:FacturaGeneDocumento | undefined
   precioTotal:number[]=[]
   serch:string=""
   cantidad:number | null=null
@@ -26,7 +29,7 @@ export class VentasVentaComponent {
   suma:number=0
   tot=0
   private objeto: ProductosModel | null=null;
-  constructor(private http:buscarProductos, private router:Router){
+  constructor(private http:buscarProductos, private router:Router, private facturaCreate:FacturaServices){
   }
   
   ngOnInit():void{
@@ -65,8 +68,24 @@ export class VentasVentaComponent {
     sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
       sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
+      //ingresar datos
+      let productstorage=sessionStorage.getItem('producto')
+      if(productstorage){
+        let todo=JSON.parse(productstorage)
+        for (let i = 0; i < todo.length; i++) {
+          if(this.cedula_cliente){
+            this.ingresarfactura(todo[i],this.cedula_cliente,i)
+          }
+          
+        }
+
+      }
+
       //funcion para redireccionar en angular
-      this.router.navigate(['/ventas/documento/']);
+        //this.router.navigate(['/ventas/documento/'],{});
+      window.open('/ventas/documento/','_blank')
+      
+      
     //localStorage--mostrar
     }
  
@@ -165,18 +184,49 @@ export class VentasVentaComponent {
         } else {
           let client = [];
         }
-      }
+      } 
 
-      ingresarfactura(factura:FacturaGene){
-        this.facturaIngresar={
-          total:factura.total,
-          cedula_cliente:factura.cedula_cliente,
-          descripccion:'hola',
-          cantidad:factura.cantidad,
-          tipo_producto:'Medicina',
-          id_prod:factura.id_prod
+
+
+      async ingresarfactura(element:any,cedula:string,iteracion:number) {
+
+        
+        if(iteracion==0){
+          this.facturaIngresarDocumento ={
+            total: this.tot,
+            cedula_cliente: cedula
+          }
+          
+          console.log(this.facturaIngresarDocumento)
+          await this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
         }
+        await this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
+          this.numDocumento= await Object.values(e)[0]['id_documento_venta']
+          this.facturaIngresarDetalle = await {
+            descripccion: "papa",
+            cantidad: element.cantidades,
+            tipo_producto: "me como",
+            id_prod: element.id_prod,
+            id_documento_venta:this.numDocumento
+          };
+          console.log(this.facturaIngresarDetalle)
+          
+          await this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
+
+        })
+        
+        console.log(this.numDocumento)
+        
+        
+
+
+          
+
+          
+  
       }
+    
+
 }
     
 

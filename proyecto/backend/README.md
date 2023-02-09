@@ -98,18 +98,26 @@ POST---localhost:3000/cliente
 }
 
 //FACTURA
-
-POST--localhost:3000/factura
+/*DETALLE VENTA*/
+POST--localhost:3000/factura/detalle
 {
-  "total":number,
-  "cedula_cliente":string ->usuario existente,
   "descripccion":string,
   "cantidad":number,
   "iva_producto":decimal,
   "tipo_producto":string,
-  "id_prod":number;->producto existente
+  "id_prod":number;->producto existente,
+  "id_documento_venta":number;
  
 }
+/*DETALLE VENTA*/
+POST--localhost:3000/factura/documento
+{
+  "total":number,
+  "cedula_cliente":string ->usuario existente
+}
+
+GET -- http://localhost:3000/factura/ultimo
+/*OBTENER EL ULTIMO ID DE DOCUMENTO VENTA*/
 
 //PRODUCTOS
 /*BUSCADOR DE PRODUCTOS 5 POR BUSQUEDA*/

@@ -1,11 +1,15 @@
 <app-ventas>
+   
 <div class="contenedor">
     <!--<nav>
-        
+         
     </nav>-->
+    <div class="alert">
+        <h3 class="mensaje">{{mensaje}}</h3>
+    </div>
     <main>
        <div class="registro">
-            <h3>REGISTRO</h3>
+            <h3>REGISTRO</h3> 
             <div class="form">
                 <div class="form-R">
 
@@ -28,15 +32,14 @@
                 </div>
                 <div class="botones">
                     <a routerLink="/ventas/inicio"><button class="atras-boton boton">ATRAS</button></a>
-                    <button (click)="CrearCliente()"  type="submit" class="registro-boton boton">REGISTRAR</button>
-                    
+                    <button (click)="CrearCliente();mostrarMensaje()"  type="submit" class="registro-boton boton">REGISTRAR</button>
                 </div>
             </div>
        </div>
 
     </main>
     <!--<footer></footer>-->
-    <app-ventas-footer></app-ventas-footer>
+
 </div>
 </app-ventas>
 

@@ -8,5 +8,4 @@ export interface proveedorModel{
 export interface createproveedorModel extends Omit<proveedorModel,'especializacion'>{
     id_cat:number,
 
-
 }

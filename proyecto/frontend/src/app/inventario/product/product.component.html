@@ -1,0 +1,49 @@
+<app-nav></app-nav>
+<div class="contenedor">
+    <div class="producto">
+        <h1>Productos</h1>
+    </div>
+    <div class="nuevo">
+        <h2>Nuevos Productos</h2>
+    </div>
+
+    <form class="formu">
+        <label class="texto">Nombre del producto</label><br>
+        <input type="text" class="inp"  required="required"><br>
+        <div class="compra">
+            <label class="texto">Precio de compra</label><br>
+            <input type="number" class="comp-vent" required="required">
+        </div>
+        <div class="venta">
+            <label class="texto">Precio de venta</label><br>
+            <input type="number" class="comp-vent" required="required">
+        </div>
+        <div class="posicion">
+            <label class="texto">Stock</label><br>
+            <input type="number" class="stock" required="required"><br>
+        </div>
+        <div class="posicion2">
+            <label class="texto">Stock Minimo</label><br>
+            <input type="number" class="stock" required="required"><br>
+        </div>
+
+        <div class="posicion3">
+            <label class="texto">Categorias</label><br>
+            <select class="opcion" required="required">
+                <option value="">Seleccione la Categoria</option>
+                <option value="">Analgésicos</option>
+                <option value="">Antiacidos</option>
+                <option value="">Antialergicos</option>
+                <option value="">Antiinfecciosos</option>
+                <option value="">Antiinflamatorios</option>
+                <option value="">Antitusivos y mucoliticos</option>
+                <option value="">Laxantes y Antidiarreicos</option>
+            </select><br>
+        </div>
+    </form>
+    <div class="boton">
+        <button type="submit" (click)="producto()">Guardar</button>
+    </div>
+
+</div>
+<app-footer></app-footer>

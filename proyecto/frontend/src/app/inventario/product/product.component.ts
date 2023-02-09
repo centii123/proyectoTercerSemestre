@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { CategoriasModel } from 'src/app/models/listar-categorias.model';
+import { CategoriasService } from 'src/app/services/categorias.service';
 
 @Component({
   selector: 'app-product',
@@ -8,8 +10,8 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductComponent {
  ngOnInit(): void{
-
  }
+
 constructor (private productService: ProductService){
 }
 nuevo={
@@ -18,7 +20,7 @@ nuevo={
   venta:'',
   stock:'',
   minimo:'',
-  categotia:'',
+  categorias:'',
 }
 producto(){
   try{

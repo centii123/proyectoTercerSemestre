@@ -181,3 +181,9 @@ outline: none;
         border-radius: 5px;   
         border: 1px solid black;
       }
+    .eliminar, .eliminar:hover{
+        margin: 2px;
+        padding: 3px;
+        border-radius: 5px;
+    }
+    

@@ -4,7 +4,7 @@ import { DetalleVentaService } from './../services/detalle_venta.service';
 import { Body} from '@nestjs/common/decorators';
 import { DocumentoVentaService } from './../services/documento_venta.service';
 
-import { Controller, Post, Get, Param } from '@nestjs/common';
+import { Controller, Post, Get, Param, ParseIntPipe } from '@nestjs/common';
 
 @Controller('factura')
 export class FacturaController {
@@ -16,6 +16,11 @@ export class FacturaController {
     @Get('/ultimo')
     verUltimoId(){
         return this.documentoVenta.obtenerUlRegistro()
+    }
+
+    @Get('/fecha/:id')
+    fecha(@Param('id',ParseIntPipe) id_doc:number){
+        return this.documentoVenta.obtenerfecha(id_doc)
     }
 
 
@@ -45,4 +50,6 @@ export class FacturaController {
             let estado={estado:"registrado"}
             return estado
     }
+
+
 }

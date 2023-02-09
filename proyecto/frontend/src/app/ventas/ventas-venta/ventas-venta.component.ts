@@ -237,7 +237,7 @@ export class VentasVentaComponent {
           setTimeout(() => {
             this.router.navigate(['/ventas/cliente/']);
           }, 2000);
-
+        }
         eliminar(event:Event){
           let target=event.target as HTMLInputElement
           let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent

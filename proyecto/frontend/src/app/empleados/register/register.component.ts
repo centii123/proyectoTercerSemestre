@@ -13,7 +13,7 @@ import { RolesService } from 'src/app/services/roles.service';
 export class RegisterComponent implements OnInit {
   claveV: string = '';
   ngOnInit(): void {
-    //this.getRoles()
+    this.getRoles()
   }
   constructor(private empleadosService: EmpleadosService,private rolesService: RolesService,private router: Router) {}
   roles: RolModel[] = [{id_rol: 1, descripcion: 'Rol1'}];

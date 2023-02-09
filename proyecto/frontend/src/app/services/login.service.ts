@@ -7,7 +7,7 @@ import { CreateEmpleadoModel, EmpleadoModel, UpdateEmpleadoModel } from '../mode
   providedIn: 'root'
 })
 export class LoginService {
-  readonly Api_url: string = '/login';
+  readonly Api_url: string = 'http://localhost:3000/login';
   constructor(private httpClient: HttpClient) {}
 
   login(logeo: Object):Observable<EmpleadoModel>{

@@ -22,7 +22,11 @@ export class InventarioService {
   }
 
   async getProduct() {
-    const hol = await this.productoRepository.query(`select p.nombre_p, p.stock, p.precio_venta, c.nombre_cat from producto as p, categorias as c where c.id_cat = p.id_cat `)
+    const hol = await this.productoRepository.query(`select p.nombre_p, p.descripcion_p, p.stock, p.precio_venta, c.nombre_cat from producto as p, categorias as c where c.id_cat = p.id_cat `)
     return hol 
+  }
+
+  async updateProducto(id_prod: number, nombre_p) {
+    return this.productoRepository.update({ id_prod }, nombre_p);
   }
 }

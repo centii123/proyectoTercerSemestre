@@ -9,7 +9,7 @@ import { RolModel } from '../models/rol.model';
 })
 
 export class RolesService {
-  readonly Api_url: string = '/roles';
+  readonly Api_url: string = 'http://localhost:3000/rol';
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<RolModel[]> {

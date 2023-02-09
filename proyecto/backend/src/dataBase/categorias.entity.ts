@@ -6,11 +6,8 @@ export class categorias {
   @PrimaryGeneratedColumn()
   id_cat: number;
 
-  @Column({ type: 'varchar', length: 20 })
+  @Column({ type: 'varchar', length: 30 })
   nombre_cat: string;
-
-  @Column({ type: 'varchar', length: 20 })
-  det_cat: string;
 
   @OneToMany(() => producto, (pro) => pro.id_prod, { cascade: true })
   id_prod: producto;

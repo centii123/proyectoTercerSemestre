@@ -7,7 +7,7 @@ import { ProductosModel } from 'src/app/ventas/models/productos.entity';
   providedIn: 'root'
 })
 export class ProductService {
-  readonly Api_url: string='/product'
+  readonly Api_url: string='http://localhost:3000/inventario'
   constructor( private httpClient: HttpClient) {}
 
   producto(nuevo: object): Observable<ProductosModel>{

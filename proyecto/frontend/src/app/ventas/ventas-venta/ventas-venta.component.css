@@ -50,9 +50,14 @@ footer{
 }
 .datos input{
     border-radius: 5px;
-    width: 150px;
     height: 25px;
     font-size: 18px;
+}
+.cliente{
+    width: 270px;
+}
+.cedula{
+    width: 180px;
 }
 .buscar{
     display: flex;

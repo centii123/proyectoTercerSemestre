@@ -103,8 +103,8 @@ export class VentasVentaComponent {
         if (hola != undefined) {
           if(hola.cantidades && hola.total){
             hola.cantidades++
-            
-            hola.total=hola.precio_venta * hola.cantidades
+            let deci=hola.precio_venta * hola.cantidades
+            hola.total=Number(deci.toFixed(2))
           }
 
           
@@ -153,7 +153,9 @@ export class VentasVentaComponent {
         if (hola != undefined) {
           if(hola.cantidades && hola.total){
             hola.cantidades= num
-            hola.total=num * hola.precio_venta
+            let num2=num * hola.precio_venta
+            let deci=Number(num2.toFixed(2))
+            hola.total=deci
           }
 
           
@@ -173,6 +175,9 @@ export class VentasVentaComponent {
         for (const i of suma) {
           this.tot=this.tot + i
         }
+        let num2=this.tot
+        let pro= Number(num2.toFixed(2))
+        this.tot=pro
       return this.tot
       
     }
@@ -204,7 +209,7 @@ export class VentasVentaComponent {
         }
           this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
             
-            let numDocumento= await Object.values(e)[0]['id_documento_venta']
+            let numDocumento= await Object.values(e)[0]['id_documento_venta'] 
             if(iteracion===0){
               localStorage.setItem('id_documento_venta',numDocumento)
             }

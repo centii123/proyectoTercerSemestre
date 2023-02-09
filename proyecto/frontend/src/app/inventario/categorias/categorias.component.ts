@@ -20,16 +20,6 @@ export class CategoriasComponent implements OnInit {
   update: boolean = false
   categorias: CategoriasModel[] = []
 
-<<<<<<< HEAD
-  updateCategorias() {
-    const response = this.categoriasService
-      .categoriasUpdate(this.updateProd,this.updateProd.id_prod)
-      .subscribe((response)=>{
-        console.log(response)
-      })
-  }
-
-=======
   constructor (private categoriasService: CategoriasService, private router: Router){}
 
   ngOnInit(): void {
@@ -58,6 +48,5 @@ export class CategoriasComponent implements OnInit {
         this.router.navigate(["inventario/listar"])
       })
   }
->>>>>>> 17dbcc7cdcd0dec617fb29e2cac3e16d0a7aaf13
 }
 

@@ -20,4 +20,8 @@ export class DocumentoVentaService {
       'SELECT max(id_documento_venta) as id_documento_venta from documento_venta',
     );
   }
+
+  async obtenerfecha(id_documento:number){
+    return await this.documento.query(`SELECT fecha from documento_venta where id_documento_venta=${id_documento}`)
+  }
 }

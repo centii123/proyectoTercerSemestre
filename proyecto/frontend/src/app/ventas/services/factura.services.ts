@@ -27,5 +27,6 @@ export class FacturaServices{
         const url = `${this.api}/detalle`;
         return this.http.post(url,registro)
     }
+    
      
 }

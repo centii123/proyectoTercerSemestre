@@ -35,6 +35,9 @@ export class VentasVentaComponent {
   ngOnInit():void{
     //this.busqueda()
   this.cliente()
+  sessionStorage.removeItem('producto')
+  sessionStorage.removeItem('Total')
+  sessionStorage.removeItem('id_documento_venta')
   }
 
   producto(cantidad:number,productos:ProductosModel){
@@ -65,16 +68,16 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
-    sape() {
+    async sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
       sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
       //ingresar datos
-      let productstorage=sessionStorage.getItem('producto')
+      let productstorage= sessionStorage.getItem('producto')
       if(productstorage){
         let todo=JSON.parse(productstorage)
         for (let i = 0; i < todo.length; i++) {
           if(this.cedula_cliente){
-            this.ingresarfactura(todo[i],this.cedula_cliente,i)
+          this.ingresarfactura(todo[i],this.cedula_cliente,i)
           }
           
         }
@@ -82,8 +85,8 @@ export class VentasVentaComponent {
       }
 
       //funcion para redireccionar en angular
-        //this.router.navigate(['/ventas/documento/'],{});
-      window.open('/ventas/documento/','_blank')
+        this.router.navigate(['/ventas/documento/']);
+      //window.open('/ventas/documento/','_blank')
       
       
     //localStorage--mostrar
@@ -181,52 +184,44 @@ export class VentasVentaComponent {
           this.cedula_cliente=client[0].cedula_cliente 
           console.log(this.cedula_cliente)
           this.nombre_cliente=`${client[0].nombres} ${client[0].apellido}`
-        } else {
-          let client = [];
-        }
+        } 
       } 
 
 
 
-      async ingresarfactura(element:any,cedula:string,iteracion:number) {
+      ingresarfactura(element:any,cedula:string,iteracion:number) {
 
         
-        if(iteracion==0){
+        if(iteracion===0){
           this.facturaIngresarDocumento ={
             total: this.tot,
             cedula_cliente: cedula
           }
           
           console.log(this.facturaIngresarDocumento)
-          await this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
+          this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
         }
-        await this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
-          this.numDocumento= await Object.values(e)[0]['id_documento_venta']
-          this.facturaIngresarDetalle = await {
-            descripccion: "papa",
-            cantidad: element.cantidades,
-            tipo_producto: "me como",
-            id_prod: element.id_prod,
-            id_documento_venta:this.numDocumento
-          };
-          console.log(this.facturaIngresarDetalle)
-          
-          await this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
-
-        })
-        
-        console.log(this.numDocumento)
-        
-        
-
-
-          
-
-          
+          this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
+            
+            this.numDocumento= await Object.values(e)[0]['id_documento_venta']
+            this.facturaIngresarDetalle = {
+              descripccion: "papa",
+              cantidad: element.cantidades,
+              tipo_producto: "me como",
+              id_prod: element.id_prod,
+              id_documento_venta:this.numDocumento
+            };
+            console.log(this.facturaIngresarDetalle)
+            
+            this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
+            sessionStorage.setItem('id_documento_venta',this.numDocumento)
   
+          })
+        }
+
       }
     
 
-}
+
     
 

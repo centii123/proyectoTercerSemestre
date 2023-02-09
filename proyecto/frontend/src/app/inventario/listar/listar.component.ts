@@ -19,5 +19,11 @@ export class ListarComponent {
     const response = this.productService.getAll().subscribe((response) => {
       this.Listar = response;
     });
-}
+  }
+   deleteProd(id:number){
+    console.log(id)
+    const response = this.productService.delete(id).subscribe((response) => {
+      this.Listar =this.Listar.filter(product => product.id_prod != id)
+    });
+  }
 }

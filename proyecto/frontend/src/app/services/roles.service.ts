@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { CreateEmpleadoModel, EmpleadoModel, UpdateEmpleadoModel } from '../models/empleado.model';
 import { RolModel } from '../models/rol.model';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { RolModel } from '../models/rol.model';
 })
 
 export class RolesService {
-  readonly Api_url: string = '/roles';
+  readonly Api_url: string = 'http://localhost:3000/rol';
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<RolModel[]> {

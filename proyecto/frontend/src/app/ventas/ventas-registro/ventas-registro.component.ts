@@ -15,6 +15,7 @@ export class VentasRegistroComponent implements OnInit{
     apellido:'',
     email:''
   } 
+  
   ngOnInit(){
     //this.getRegistro();
   }
@@ -25,11 +26,12 @@ export class VentasRegistroComponent implements OnInit{
     this.http.registrarCliente(this.data).subscribe(e=>{console.log(e)});
   } 
   mensaje=''
-    mostrarMensaje() {
-      if (this.data.cedula_cliente && this.data.nombres && this.data.apellido && this.data.email) {
+
+  mostrarMensaje() {
+    if (this.data.cedula_cliente && this.data.nombres && this.data.apellido && this.data.email) {
       this.mensaje = 'Registrado con éxito';
-      } else {
+    } else {
       this.mensaje = 'Lo sentimos, ha ocurrido un problema. Vuelva a intentarlo.';
-      }
+    }
   }
-}
+  }

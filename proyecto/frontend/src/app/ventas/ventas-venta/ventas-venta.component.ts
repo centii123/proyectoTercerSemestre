@@ -1,5 +1,5 @@
 import { FacturaServices } from './../services/factura.services';
-import { FacturaGene } from './../models/facturaGene.entity';
+import { FacturaGeneDetalle, FacturaGeneDocumento } from './../models/facturaGene.entity';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
@@ -14,10 +14,12 @@ export class VentasVentaComponent {
   cedula_cliente:string | undefined
   nombre_cliente:string | undefined
   selectProducts:number[]=[]
+  numDocumento:any
   catalogoProductos:ProductosModel[]=[]
   catalogoP:ProductosModel[]=[]
   facturaProductos:ProductosModel[]=[]
-  facturaIngresar:FacturaGene | undefined
+  facturaIngresarDetalle:FacturaGeneDetalle | undefined
+  facturaIngresarDocumento:FacturaGeneDocumento | undefined
   precioTotal:number[]=[]
   serch:string=""
   cantidad:number | null=null
@@ -33,6 +35,9 @@ export class VentasVentaComponent {
   ngOnInit():void{
     //this.busqueda()
   this.cliente()
+  sessionStorage.removeItem('producto')
+  sessionStorage.removeItem('Total')
+  sessionStorage.removeItem('id_documento_venta')
   }
 
   producto(cantidad:number,productos:ProductosModel){
@@ -63,23 +68,29 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
-    sape() {
+    comprado=''
+    async sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
       sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
       //ingresar datos
-      let productstorage=sessionStorage.getItem('producto')
+      let productstorage= sessionStorage.getItem('producto')
       if(productstorage){
         let todo=JSON.parse(productstorage)
-        for (const i of todo) {
+        for (let i = 0; i < todo.length; i++) {
           if(this.cedula_cliente){
-            this.ingresarfactura(i,this.cedula_cliente)
+          this.ingresarfactura(todo[i],this.cedula_cliente,i)
           }
           
         }
+
       }
 
-      //funcion para redireccionar en angular
-      //this.router.navigate(['/ventas/documento/']);
+      //funcion para redireccionar en angular y para alertas    
+      this.comprado='Su compra se ha realizado con exito'
+      setTimeout(() => {
+      this.router.navigate(['/ventas/inicio/']);
+      window.open('/ventas/documento/','_blank')
+      }, 3000);
       
       
     //localStorage--mostrar
@@ -95,8 +106,8 @@ export class VentasVentaComponent {
         if (hola != undefined) {
           if(hola.cantidades && hola.total){
             hola.cantidades++
-            
-            hola.total=hola.precio_venta * hola.cantidades
+            let deci=hola.precio_venta * hola.cantidades
+            hola.total=Number(deci.toFixed(2))
           }
 
           
@@ -145,7 +156,9 @@ export class VentasVentaComponent {
         if (hola != undefined) {
           if(hola.cantidades && hola.total){
             hola.cantidades= num
-            hola.total=num * hola.precio_venta
+            let num2=num * hola.precio_venta
+            let deci=Number(num2.toFixed(2))
+            hola.total=deci
           }
 
           
@@ -165,6 +178,9 @@ export class VentasVentaComponent {
         for (const i of suma) {
           this.tot=this.tot + i
         }
+        let num2=this.tot
+        let pro= Number(num2.toFixed(2))
+        this.tot=pro
       return this.tot
       
     }
@@ -177,28 +193,84 @@ export class VentasVentaComponent {
           this.cedula_cliente=client[0].cedula_cliente 
           console.log(this.cedula_cliente)
           this.nombre_cliente=`${client[0].nombres} ${client[0].apellido}`
-        } else {
-          let client = [];
-        }
+        } 
       } 
 
 
-      ingresarfactura(element:any,cedula:string) {
 
-          this.facturaIngresar = {
-            total: element.total,
-            cedula_cliente: cedula,
-            descripccion: "papa",
-            cantidad: element.cantidades,
-            tipo_producto: "me como",
-            id_prod: element.id_prod
-          };
-          this.facturaCreate.registrarFactura(this.facturaIngresar).subscribe()
-          console.log(this.facturaIngresar)
-  
+      ingresarfactura(element:any,cedula:string,iteracion:number) {
+
+        
+        if(iteracion===0){
+          this.facturaIngresarDocumento ={
+            total: this.tot,
+            cedula_cliente: cedula
+          }
+          
+          console.log(this.facturaIngresarDocumento)
+          this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
+        }
+          this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
+            let numDocumento= null
+            numDocumento= await Object.values(e)[0]['id_documento_venta'] 
+            if(iteracion===0){
+              localStorage.setItem('id_documento_venta',numDocumento)
+            }
+            this.facturaIngresarDetalle = {
+              descripccion: "papa",
+              cantidad: element.cantidades,
+              tipo_producto: "me como",
+              id_prod: element.id_prod,
+              id_documento_venta:numDocumento
+            };
+            console.log(this.facturaIngresarDetalle)
+            
+            this.facturaCreate.registrarfacturaDetalle(this.facturaIngresarDetalle).subscribe()
+            
+            
+          })
+        }
+
+        cancelado = '';
+        cancelar() {
+          this.cancelado = `Info! Su pedido se ha cancelado.`;
+          setTimeout(() => {
+            this.router.navigate(['/ventas/cliente/']);
+          }, 2000);
+        }
+        eliminar(event:Event){
+          let target=event.target as HTMLInputElement
+          let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+
+          if(id_prod){
+            let numid=this.convertirnum(id_prod)
+            console.log(this.facturaProductos)
+            let numelimi=0;
+            for (let i = 0; i < this.facturaProductos.length; i++) {
+              if(this.facturaProductos[i].id_prod==numid){
+                numelimi=i
+              }
+              
+            }
+            if(numelimi==0){
+              this.facturaProductos.splice(0,1)
+            }
+            if(numelimi){
+              this.facturaProductos.splice(numelimi,1)
+              console.log(numelimi)
+            }
+            
+
+            //targeta.remove()
+            
+          }
+         
+
+        }
+
       }
     
 
-}
+
     
 

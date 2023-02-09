@@ -5,6 +5,10 @@ import { InventarioRoutingModule } from './inventario-routing.module';
 import { ProductComponent } from './product/product.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { ListarComponent } from './listar/listar.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { ListarCategoriasComponent } from './listar-categorias/listar-categorias.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,11 +17,15 @@ import { FooterComponent } from './footer/footer.component';
     InventarioComponent,
     ProductComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    ListarComponent,
+    CategoriasComponent,
+    ListarCategoriasComponent
   ],
   imports: [
     CommonModule,
-    InventarioRoutingModule
+    InventarioRoutingModule,
+    FormsModule
   ]
 })
 export class InventarioModule { }

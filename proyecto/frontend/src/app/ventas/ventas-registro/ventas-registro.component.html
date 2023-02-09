@@ -5,7 +5,7 @@
          
     </nav>-->
     <div class="alert">
-        <h3 class="mensaje">{{mensaje}}</h3>
+        <h3 [ngClass]="{'registrado': mensaje === 'Registrado con éxito', 'sin_registrar': mensaje === 'Lo sentimos, ha ocurrido un problema. Vuelva a intentarlo.'}">{{mensaje}}</h3>
     </div>
     <main>
        <div class="registro">

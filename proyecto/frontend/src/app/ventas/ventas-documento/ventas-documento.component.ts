@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductosModel } from '../models/productos.entity';
-import { ClienteServices } from '../services/cliente.services';
 
 @Component({
   selector: 'app-ventas-documento',
@@ -9,14 +9,20 @@ import { ClienteServices } from '../services/cliente.services';
 }) 
 export class VentasDocumentoComponent implements OnInit{
   ngOnInit(): void {
+    
     this.cliente()
     this.mostrar()
+    
+
+   
   }
   cedula_cliente:string | undefined
   nombre_cliente:string | undefined
+  fecha_fac:any
+  id_factura:string | undefined
   tot:any 
   facturaProductos:ProductosModel[]=[]
-  constructor(private http:ClienteServices){}
+  constructor(private http:HttpClient){}
 
   consultarCli(){
     const url = 'localhost:3000/factura'
@@ -46,9 +52,27 @@ export class VentasDocumentoComponent implements OnInit{
          this.cedula_cliente=client[0].cedula_cliente 
          console.log(this.cedula_cliente)
          this.nombre_cliente=`${client[0].nombres} ${client[0].apellido}`
+         this.facturanum()
        } else {
          let client = [];
        }
      }
+
+    facturanum(){
+      let storages=localStorage.getItem('id_documento_venta')
+      if(storages){
+        this.id_factura=storages
+      }
+      if(this.id_factura){
+        let num=parseInt(this.id_factura)
+        this.fecha(num)
+      }
+    }
+
+    fecha(num:number){
+      this.http.get(`http://localhost:3000/factura/fecha/${num}`).subscribe(e=>{
+        this.fecha_fac=Object.values(e)[0]['fecha'].substring(0,10)
+      })
+    }
 
 }

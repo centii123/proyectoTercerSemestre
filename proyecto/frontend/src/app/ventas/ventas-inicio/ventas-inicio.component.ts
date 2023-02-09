@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VentasInicioComponent implements OnInit{
   ngOnInit(): void {
-    
+
   }
   readonly url = 'localhost:3000/cliente?';
   constructor(private http:HttpClient){}

@@ -13,6 +13,10 @@ export class VentasClienteComponent {
   valor:string | undefined
 constructor(private clienteSer:ClienteServices,  private router:Router){}
 
+ngOnInit():void{
+  localStorage.removeItem('id_documento_venta')
+}
+
 clienteBuscador(event:Event){
   let evento=event.target as HTMLInputElement
   this.valor= evento.value
@@ -33,6 +37,5 @@ buscarCliente(event:Event){
     this.router.navigate(['/ventas/venta/']);
   }) 
 }
-
 
 }

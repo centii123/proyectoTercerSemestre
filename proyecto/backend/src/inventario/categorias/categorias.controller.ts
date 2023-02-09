@@ -7,7 +7,7 @@ import {
   ParseIntPipe,
   Delete,
   Param,
-  Patch,
+  Put,
 } from '@nestjs/common';
 import { CategoriasService } from '../services/categorias.service';
 
@@ -34,7 +34,7 @@ export class CategoriasController {
   }
 
   //actualizar categoria//
-  @Patch(':id')
+  @Put(':id')
   updatecategorias(@Param('id', ParseIntPipe) id: number, @Body() UpdateCategorias) {
     return this.categoriasService.updateCategorias(id, UpdateCategorias);
   }

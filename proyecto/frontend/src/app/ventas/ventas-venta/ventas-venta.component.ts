@@ -202,8 +202,11 @@ export class VentasVentaComponent {
           this.facturaCreate.registrarFacturaDocumento(this.facturaIngresarDocumento).subscribe()
         }
           this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
-            
-            this.numDocumento= await Object.values(e)[0]['id_documento_venta']
+            if(iteracion===0){
+              this.numDocumento= await Object.values(e)[0]['id_documento_venta'] + 1
+            }else{
+              this.numDocumento= await Object.values(e)[0]['id_documento_venta']
+            }
             this.facturaIngresarDetalle = {
               descripccion: "papa",
               cantidad: element.cantidades,

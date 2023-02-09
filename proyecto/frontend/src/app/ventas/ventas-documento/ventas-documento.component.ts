@@ -63,6 +63,10 @@ export class VentasDocumentoComponent implements OnInit{
     }
 
     fechaextra(){
+      let storage=sessionStorage.getItem('id_documento_venta')
+      if(storage){
+        this.id_factura=storage
+      }
       if(this.id_factura){
         let num=parseInt(this.id_factura)
         this.fecha(num)

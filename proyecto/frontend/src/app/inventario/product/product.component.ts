@@ -66,6 +66,7 @@ producto(){
       .productoUpdate(this.updateProd,this.updateProd.id_prod)
       .subscribe((response)=>{
         console.log(response)
+        this.router.navigate(["inventario/listar"])
       })
   }
   listCategorias(){

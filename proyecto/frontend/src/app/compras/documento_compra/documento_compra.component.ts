@@ -10,7 +10,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class Documento_compraComponent implements OnInit {
 
-  constructor() { 
+  constructor() {
   }
   crearPdf(){
       const pdfDefinition:any ={

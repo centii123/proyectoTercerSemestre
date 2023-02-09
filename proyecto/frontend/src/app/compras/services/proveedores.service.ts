@@ -14,11 +14,14 @@ export class ProveedoresService {
   constructor(private httpClient : HttpClient) {
     
    }
+   //listar proveedores//
    getAll():Observable<proveedorModel[]>{4
     const url = `${this.Api_url}`;
     const response = this.httpClient.get<proveedorModel[]>(url)
     return response 
    }
+
+   //registrar proveedores//
    postAll(proveedor:createproveedorModel):Observable<createproveedorModel>{
     const url = `${this.Api_url}`;
     const response = this.httpClient.post<createproveedorModel>(url, proveedor)

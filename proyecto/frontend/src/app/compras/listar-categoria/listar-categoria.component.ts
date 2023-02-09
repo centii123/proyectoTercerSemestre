@@ -19,5 +19,7 @@ export class ListarCategoriaComponent implements OnInit{
   const response = this.categoriaService.getAll().subscribe((response) => {
     this.categorias = response;
   });
+
 }
+
 }

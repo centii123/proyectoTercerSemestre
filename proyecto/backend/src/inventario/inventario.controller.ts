@@ -25,7 +25,7 @@ export class InventarioController {
   }
 
   @Patch(':id')
-  updateProducto(@Param('id', ParseIntPipe) id: number, @Body() UpdateProducto) {
-    return this.productoService.updateProducto(id, this.updateProducto);
+  update(@Param('id', ParseIntPipe) id: number, @Body() UpdateProducto) {
+    return this.productoService.updateProducto(id, UpdateProducto);
   }
 }

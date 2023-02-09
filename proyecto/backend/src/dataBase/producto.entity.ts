@@ -15,8 +15,11 @@ export class producto {
   @PrimaryGeneratedColumn()
   id_prod: number;
 
-  @Column({ type: 'varchar', length: 20 })
+  @Column({ type: 'varchar', length: 40 })
   nombre_p: string;
+
+  @Column({ type: 'varchar', length: 50 })
+  descripcion_p: string;
 
   @Column({ type: 'int' })
   stock: number;

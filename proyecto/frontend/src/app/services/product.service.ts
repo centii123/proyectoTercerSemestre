@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductosModel } from 'src/app/ventas/models/productos.entity';
+import { listarModel } from '../models/listar.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,10 @@ export class ProductService {
     const response = this.httpClient.post<ProductosModel> (url,nuevo);
     return response;
 
+  }
+  getAll(): Observable <listarModel[]> {
+      const url = `${this.Api_url}`;
+      const Response = this.httpClient.get<listarModel[]>(url);
+      return Response;
   }
 }

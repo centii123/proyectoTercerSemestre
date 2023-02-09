@@ -34,5 +34,4 @@ buscarCliente(event:Event){
   }) 
 }
 
-
 }

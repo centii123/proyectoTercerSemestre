@@ -59,9 +59,9 @@ export class VentasDocumentoComponent implements OnInit{
      }
 
     facturanum(){
-      let storage=localStorage.getItem('id_documento_venta')
-      if(storage){
-        this.id_factura=storage
+      let storages=localStorage.getItem('id_documento_venta')
+      if(storages){
+        this.id_factura=storages
       }
       if(this.id_factura){
         let num=parseInt(this.id_factura)

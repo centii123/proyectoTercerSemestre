@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ListarComponent } from './listar/listar.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { ListarCategoriasComponent } from './listar-categorias/listar-categorias.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,8 @@ import { ListarCategoriasComponent } from './listar-categorias/listar-categorias
   ],
   imports: [
     CommonModule,
-    InventarioRoutingModule
+    InventarioRoutingModule,
+    FormsModule
   ]
 })
 export class InventarioModule { }

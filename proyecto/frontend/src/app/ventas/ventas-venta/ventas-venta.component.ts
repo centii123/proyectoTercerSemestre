@@ -68,6 +68,7 @@ export class VentasVentaComponent {
   }
  
     //localStorage---guardar
+    comprado=''
     async sape() {
       sessionStorage.setItem('producto', JSON.stringify(this.facturaProductos));
       sessionStorage.setItem('Total', JSON.stringify(this.tot)); 
@@ -84,10 +85,12 @@ export class VentasVentaComponent {
 
       }
 
-      //funcion para redireccionar en angular
+      //funcion para redireccionar en angular y para alertas    
+      this.comprado='Su compra se ha realizado con exito'
+      setTimeout(() => {
       this.router.navigate(['/ventas/inicio/']);
-      
       window.open('/ventas/documento/','_blank')
+      }, 3000);
       
       
     //localStorage--mostrar
@@ -103,8 +106,8 @@ export class VentasVentaComponent {
         if (hola != undefined) {
           if(hola.cantidades && hola.total){
             hola.cantidades++
-            
-            hola.total=hola.precio_venta * hola.cantidades
+            let deci=hola.precio_venta * hola.cantidades
+            hola.total=Number(deci.toFixed(2))
           }
 
           
@@ -153,7 +156,9 @@ export class VentasVentaComponent {
         if (hola != undefined) {
           if(hola.cantidades && hola.total){
             hola.cantidades= num
-            hola.total=num * hola.precio_venta
+            let num2=num * hola.precio_venta
+            let deci=Number(num2.toFixed(2))
+            hola.total=deci
           }
 
           
@@ -173,6 +178,9 @@ export class VentasVentaComponent {
         for (const i of suma) {
           this.tot=this.tot + i
         }
+        let num2=this.tot
+        let pro= Number(num2.toFixed(2))
+        this.tot=pro
       return this.tot
       
     }
@@ -204,7 +212,7 @@ export class VentasVentaComponent {
         }
           this.facturaCreate.obtenerultimodoc().subscribe(async e=>{
             
-            let numDocumento= await Object.values(e)[0]['id_documento_venta']
+            let numDocumento= await Object.values(e)[0]['id_documento_venta'] 
             if(iteracion===0){
               localStorage.setItem('id_documento_venta',numDocumento)
             }
@@ -221,6 +229,43 @@ export class VentasVentaComponent {
             
   
           })
+        }
+
+        cancelado = '';
+        cancelar() {
+          this.cancelado = `Info! Su pedido se ha cancelado.`;
+          setTimeout(() => {
+            this.router.navigate(['/ventas/cliente/']);
+          }, 2000);
+        }
+        eliminar(event:Event){
+          let target=event.target as HTMLInputElement
+          let id_prod=target.parentElement?.parentElement?.querySelector('#idproduct')?.textContent
+
+          if(id_prod){
+            let numid=this.convertirnum(id_prod)
+            console.log(this.facturaProductos)
+            let numelimi=0;
+            for (let i = 0; i < this.facturaProductos.length; i++) {
+              if(this.facturaProductos[i].id_prod==numid){
+                numelimi=i
+              }
+              
+            }
+            if(numelimi==0){
+              this.facturaProductos.splice(0,1)
+            }
+            if(numelimi){
+              this.facturaProductos.splice(numelimi,1)
+              console.log(numelimi)
+            }
+            
+
+            //targeta.remove()
+            
+          }
+         
+
         }
 
       }

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
   constructor (private loginService: LoginService,private empleadosService: EmpleadosService,private router: Router) {
   }
-  empleados: EmpleadoModel[] = []
+  empleados: CreateEmpleadoModel[] = []
   rol: number = 0;
   logeo = {
     email: '',
@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   login(){
     try {
-      this.logearEmpleado();
       this.compareEmpleados();
       this.redirect();
     } catch (error) {
@@ -42,7 +41,9 @@ export class LoginComponent implements OnInit {
   compareEmpleados(){
     this.empleados.forEach(empleado => {
       if (empleado.email === this.logeo.email && empleado.clave === this.logeo.clave) {
-        this.rol = empleado.id_rol.id_rol
+        this.rol = empleado.id_rol
+        console.log(this.rol)
+        console.log('si')
       }
     });
   }
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
     if (this.rol === 1) {
       this.router.navigate(['/ventas/inicio'])
     } else if(this.rol === 2) {
-      this.router.navigate(['/'])
+      this.router.navigate(['/inventario/listar'])
     }else if(this.rol === 3){
       this.router.navigate(['/'])
     }else {

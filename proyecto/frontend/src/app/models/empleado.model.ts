@@ -9,10 +9,10 @@ export interface EmpleadoModel {
   id_rol: RolModel;
 }
 
-export interface CreateEmpleadoModel extends Omit<EmpleadoModel, 'id_rol'> {
-    id_rol: number;
+export interface CreateEmpleadoModel extends Omit<EmpleadoModel,'id_rol'> {
+  id_rol: number;
 }
 
 export interface UpdateEmpleadoModel extends Omit<EmpleadoModel, 'id_rol'> {
-    id_rol: number;
+  id_rol: number;
 }

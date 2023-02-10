@@ -19,6 +19,7 @@ export class EmpleadosService {
   }
 
   async getRol() {
-    return this.empleadosRepository.find();
-  }
+    const hol = await this.empleadosRepository.query(`select * from empleados `)
+    return hol 
+}
 }

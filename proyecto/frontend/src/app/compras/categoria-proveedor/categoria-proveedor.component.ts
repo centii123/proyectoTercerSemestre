@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriaModel } from '../models/categoria.model';
+
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaModel } from '../models/categoria.model';
 
 @Component({
   selector: 'app-categoria-proveedor',
@@ -22,7 +23,7 @@ export class CategoriaProveedorComponent {
   constructor(private categoriaService: CategoriaService) {
     
   }
-  updateCate: CategoriaModel={
+  updateCate: CategoriaModel ={
     id_cat: 0,
     especializacion: '',
     

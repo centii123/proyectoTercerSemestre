@@ -9,3 +9,4 @@ export interface createproveedorModel extends Omit<proveedorModel,'especializaci
     id_cat:number,
 
 }
+

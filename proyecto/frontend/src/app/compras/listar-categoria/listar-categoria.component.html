@@ -28,6 +28,7 @@
         <tr *ngFor="let categoria of categorias">
           <th  scope="row">{{categoria.id_cat}}</th>
           <td>{{categoria.especializacion}}</td>
+          <td> <button [routerLink]="['../categoria']" [state]="categoria" class="butt" name="update">Actualizar</button> </td>
           <td> <button (click)="deleteCat(categoria.id_cat)" class="but">Eliminar</button> </td>
         </tr>
         

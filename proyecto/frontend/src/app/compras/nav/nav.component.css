@@ -8,15 +8,11 @@
 
 nav{
     background: #BDDFFF;
-    height: 80px;
+    height: 13vh;
     width: 100%;
 }
 .enlace{
     position: absolute;
-    padding: 20px 50px;
-}
-.logo{
-    height: 40px;
 }
 nav ul{
     float: right;
@@ -39,6 +35,12 @@ li a.active, li a:hover{
     background: #a8a8aa;
     transition: .5s;
 }
+.noactive {
+    color: #ffffff;
+    background: #f10c0c;
+   
+}
+
 .checkbtn{
     font-size: 30px;
     color: #fff;
@@ -95,6 +97,6 @@ section{
         color: red;
     }
     #check:checked ~ ul{
-        left:0;
+       left: 0;
     }
 }

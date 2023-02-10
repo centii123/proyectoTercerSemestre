@@ -42,12 +42,6 @@ export class ProveedorService {
     return this.proRepository.update({ id_prov }, prov1);
   }
    
-  async buscproduct(id_prov: number){
-    let hol= await this.proRepository.query('')
-    return this.proRepository.findOne({
-        where:{
-            id_prov
-        }
-    })
+ 
  
 }

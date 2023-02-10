@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   ngOnInit(): void {
-    
+    this.logearEmpleado();
   }
   constructor (private loginService: LoginService,private empleadosService: EmpleadosService,private router: Router) {
   }
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     try {
       this.logearEmpleado();
       this.compareEmpleados();
+      this.redirect();
     } catch (error) {
       console.log(error)
     }

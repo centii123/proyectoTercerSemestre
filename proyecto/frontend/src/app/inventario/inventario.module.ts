@@ -10,6 +10,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { ListarCategoriasComponent } from './listar-categorias/listar-categorias.component';
 import { FormsModule } from '@angular/forms';
 import { CategoryListPipe } from '../pipes/category-list.pipe';
+import { productListPipe } from '../pipes/product-list.pipe';
 
 
 
@@ -23,7 +24,8 @@ import { CategoryListPipe } from '../pipes/category-list.pipe';
     ListarComponent,
     CategoriasComponent,
     ListarCategoriasComponent,
-    CategoryListPipe
+    CategoryListPipe,
+    productListPipe
   ],
   imports: [
     CommonModule,

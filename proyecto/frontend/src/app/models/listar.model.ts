@@ -6,6 +6,7 @@ export interface listarModel {
   stock_min: number;
   precio_compra: number;
   precio_venta: number;
+  id_cat: number;
   nombre_cat: string;
 }
 

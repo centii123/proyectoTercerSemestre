@@ -13,17 +13,20 @@ import { Router } from '@angular/router';
 export class ProductComponent {
   update: boolean = false;
   private router= inject(Router);
- ngOnInit(): void{
+  ngOnInit(): void{
   this.listCategorias()
-  if (history.state.nombre_cat) {
+  if (history.state.id_cat) {
     this.update = true
-    this.updateProd= history.state
+    delete history.state.nombre_cat
+    delete history.state.navigationId
     console.log(history.state)
+    this.updateProd= history.state
   }
  }
+
  categories: CategoriasModel[] = []
-constructor (private productService: ProductService, private categoriaService: CategoriasService){
-}
+  constructor (private productService: ProductService, private categoriaService: CategoriasService){}
+
 productoNuevo: CreatelistarModel={
  descripcion_p: '',
  nombre_p: '',
@@ -63,6 +66,7 @@ producto(){
       .productoUpdate(this.updateProd,this.updateProd.id_prod)
       .subscribe((response)=>{
         console.log(response)
+        this.router.navigate(["inventario/listar"])
       })
   }
   listCategorias(){

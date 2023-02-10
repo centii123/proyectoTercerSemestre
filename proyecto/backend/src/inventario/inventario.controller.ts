@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Body, Get, Delete, Param, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Get, Delete, Param, Put } from '@nestjs/common';
 import { ParseIntPipe } from '@nestjs/common/pipes';
 import { InventarioService } from './services/inventario.service';
 
@@ -24,7 +24,7 @@ export class InventarioController {
     this.productoService.deleteProduct(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id', ParseIntPipe) id: number, @Body() UpdateProducto) {
     return this.productoService.updateProducto(id, UpdateProducto);
   }

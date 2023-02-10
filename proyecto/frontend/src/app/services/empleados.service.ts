@@ -10,9 +10,9 @@ export class EmpleadosService {
   readonly Api_url: string = 'http://localhost:3000/empleados';
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<EmpleadoModel[]> {
+  getAll(): Observable<CreateEmpleadoModel[]> {
     const url = `${this.Api_url}`;
-    const response = this.httpClient.get<EmpleadoModel[]>(url);
+    const response = this.httpClient.get<CreateEmpleadoModel[]>(url);
     return response;
   }
   store(empleado: CreateEmpleadoModel):Observable<CreateEmpleadoModel>{

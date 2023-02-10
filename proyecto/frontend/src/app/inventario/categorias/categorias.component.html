@@ -17,7 +17,7 @@
         placeholder="Nombre de la Categoria">
         <br><br>
         <button (click)="nuevaCategoria(categoriasNuevo)"
-        value="guardar" class="boton"
+        value="guardar" class="boton" [routerLink]="['/inventario/categorias_l']"
         >Registrar</button>
       </form>
     </div>
@@ -40,7 +40,7 @@
         (change)="print()"
         placeholder="">
         <br><br>
-        <button (click)="updateCategoria(categoriasEdit)"  type="submit" id="boton" value="guardar" class="boton">Actualizar</button>
+        <button (click)="updateCategoria(categoriasEdit)"  type="submit" id="boton" value="guardar" class="boton" [routerLink]="['/inventario/categorias_l']">Actualizar</button>
       </form>
     </div>
 

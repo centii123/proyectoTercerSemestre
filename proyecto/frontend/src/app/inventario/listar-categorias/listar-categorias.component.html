@@ -10,10 +10,10 @@
     </div>
 
     <div class="buscar">
-      <input type="search" class="bt-buscar">
+      <input type="search" class="bt-buscar" [(ngModel)]="filterName" >
       <input type="submit" value="Buscar" class="bt-buscar"
         style="background-color: blue; color: rgb(255, 255, 255); margin-left: 5px; border-radius: 5px;">
-      <input type="search" value="Crear Nuevo" class="bt-buscar"
+      <input type="submit" value="Crear Nuevo" class="bt-buscar"
         style="background-color: blue; color: rgb(255, 255, 255); margin-left: 5px; border-radius: 5px;"
         routerLink="/inventario/categorias"
         >
@@ -32,10 +32,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let categoria of categorias">
+        <tr *ngFor="let categoria of categorias| categoryList:filterName">
           <td  scope="row">{{categoria.id_cat}}</td>
           <td>{{categoria.nombre_cat}}</td>
-          <td> <button [routerLink]="['../categorias']" [state]="categoria" class="butt">Actualizar</button> </td>
+          <td> <button [routerLink]="['../categorias']" [state]="categoria" class="butt" >Actualizar</button> </td>
           <td> <button (click)="deleteCat(categoria.id_cat)" class="but">Eliminar</button> </td>
         </tr>
 

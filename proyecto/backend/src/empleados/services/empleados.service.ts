@@ -7,9 +7,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class EmpleadosService {
-  getOne(id: number) {
-    throw new Error('Method not implemented.');
-  }
+
+  
+
   constructor(
     @InjectRepository(empleados) private empleadosRepository: Repository<empleados>
   ) {}
@@ -17,4 +17,9 @@ export class EmpleadosService {
     const newEmpleados = await this.empleadosRepository.create(empleados)
     return await this.empleadosRepository.save(newEmpleados)
   }
+
+  async getRol() {
+    const hol = await this.empleadosRepository.query(`select * from empleados`)
+    return hol 
+}
 }

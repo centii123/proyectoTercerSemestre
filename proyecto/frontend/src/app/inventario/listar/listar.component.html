@@ -37,7 +37,7 @@
             <tr *ngFor="let listar of Listar">
               <td>{{listar.nombre_p}}</td>
               <td>{{listar.descripcion_p}}</td>
-              <td>{{listar.stock}}</td>
+              <td class="text-{{listar.stock <= listar.stock_min ? 'danger' : 'red'}}">{{listar.stock}}</td>
               <td>{{listar.precio_venta}}</td>
               <td>{{listar.nombre_cat}}</td>
               <td> <button [routerLink]="['../product']" [state]="listar" class="butt" name="update">Actualizar</button> </td>

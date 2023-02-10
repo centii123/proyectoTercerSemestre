@@ -42,8 +42,6 @@ export class LoginComponent implements OnInit {
     this.empleados.forEach(empleado => {
       if (empleado.email === this.logeo.email && empleado.clave === this.logeo.clave) {
         this.rol = empleado.id_rol
-        console.log(this.rol)
-        console.log('si')
       }
     });
   }
@@ -53,7 +51,7 @@ export class LoginComponent implements OnInit {
     } else if(this.rol === 2) {
       this.router.navigate(['/inventario/listar'])
     }else if(this.rol === 3){
-      this.router.navigate(['/'])
+      this.router.navigate(['/compras/proveedores'])
     }else {
       this.router.navigate(['/login'])
     }

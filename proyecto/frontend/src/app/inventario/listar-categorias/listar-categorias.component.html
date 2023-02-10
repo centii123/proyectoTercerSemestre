@@ -10,7 +10,7 @@
     </div>
 
     <div class="buscar">
-      <input type="search" class="bt-buscar">
+      <input type="search" class="bt-buscar" [(ngModel)]="filterName" >
       <input type="submit" value="Buscar" class="bt-buscar"
         style="background-color: blue; color: rgb(255, 255, 255); margin-left: 5px; border-radius: 5px;">
       <input type="submit" value="Crear Nuevo" class="bt-buscar"
@@ -19,9 +19,6 @@
         >
         <br><br><br><br>
     </div>
-
-    <div class="col-lg-1 col-md-1"><label class="fw-semibold form-label" for="filterNombre">Nombre:</label></div>
-              <div class="col-lg-3 col-md-3"><input [(ngModel)]="filterName" id="filterNombre" name="filterNombre" class="form-control" type="text"></div>
 
     <table class="table table-striped tabla1">
       <thead>

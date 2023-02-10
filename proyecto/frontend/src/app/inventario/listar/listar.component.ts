@@ -12,8 +12,8 @@ export class ListarComponent {
   ngOnInit(): void {
     this.getAll()
   }
-
-  Listar: listarModel []=[]
+  Listar: listarModel []=[];
+  filterName: string = '';
   constructor (private productService: ProductService){}
   async getAll(){
     const response = this.productService.getAll().subscribe((response) => {

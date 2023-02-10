@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaModel } from '../models/categoria.model';
 import { createproveedorModel, proveedorModel } from '../models/proveedores.model';
 import { ProveedoresService } from '../services/proveedores.service';
 
@@ -9,11 +11,15 @@ import { ProveedoresService } from '../services/proveedores.service';
   styleUrls: ['./registro-proveedor.component.css']
 })
 export class RegistroProveedorComponent {
+ 
+  categorias: any;
   ngOnInit(): void {
     
 
 }
-constructor (private proveedorService: ProveedoresService, private router: Router){
+
+categories: CategoriaModel[] = []
+constructor (private proveedorService: ProveedoresService, private router: Router, private categoriaService: CategoriaService){
 
 
 }
@@ -32,4 +38,11 @@ registro : createproveedorModel={
     direccion:'',
     id_cat:0
 }
+
+listCategorias(){
+  const response = this.categoriaService.getAll().subscribe(response => {
+    this.categories = response
+  })
+}
+
 }

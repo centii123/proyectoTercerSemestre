@@ -47,6 +47,7 @@ updateCategoria() {
     .cateUpdate(this.updateCate,this.updateCate.id_cat)
     .subscribe((response)=>{
       console.log(response)
+      this.router.navigate(['/compras/listar-c/']);
     })
 }
 

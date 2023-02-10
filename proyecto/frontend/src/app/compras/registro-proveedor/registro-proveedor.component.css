@@ -82,5 +82,11 @@ h2 {
         margin-left: 10%;
     }
    
-   
+    .opcion{
+        width: 40vh;
+        height: 5vh;
+        font-size: 20px;
+        border-radius: 5px;
+        border-color: blue;
+    }
 }

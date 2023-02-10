@@ -8,12 +8,10 @@
     <div class="titulos">
       <h2>Categoría Proveedor</h2>
     </div>
-
-    <div class="buscar">
-      <input type="search" class="bt-buscar">
-      <input type="submit" value="Buscar" class="bt-buscar"
-        style="background-color: blue; color: rgb(255, 255, 255); margin-left: 5px; border-radius: 5px;"><br><br>
-    </div>
+    <br>
+      <input type="submit" value="Nuevo" class="bt-buscar"
+      style="background-color: blue; color: rgb(255, 255, 255); margin-left: 10%; border-radius: 5px;" routerLink="/compras/categoria">
+<br><br>
 
     <table class="table table-striped tabla1">
       <thead>
@@ -28,7 +26,6 @@
         <tr *ngFor="let categoria of categorias">
           <th  scope="row">{{categoria.id_cat}}</th>
           <td>{{categoria.especializacion}}</td>
-          <td> <button [routerLink]="['../categoria']" [state]="categoria" class="butt" name="update">Actualizar</button> </td>
           <td> <button (click)="deleteCat(categoria.id_cat)" class="but">Eliminar</button> </td>
         </tr>
         

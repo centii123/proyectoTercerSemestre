@@ -4,8 +4,9 @@ export interface CategoriasModel {
 }
 
 export interface CreateCategoriasModel extends Omit<CategoriasModel, 'id_cat'> {
- 
+ id_cat:number
 }
-export interface UpdateCategoriasModel extends Omit<CategoriasModel, 'nombre_cat'> {
+export interface UpdateCategoriasModel{
   id_cat: number;
+  nombre_cat:string;
 }

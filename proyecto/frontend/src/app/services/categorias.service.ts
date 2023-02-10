@@ -18,10 +18,10 @@ export class CategoriasService {
     return response;
   }
 
-  update(categorias: CategoriasModel,id: number):Observable<CategoriasModel>{
-    const url = `${this.Api_url}/${id}`;
-    const response = this.httpClient.post<CategoriasModel>(url, categorias);
-    return response;
+  update(id: CategoriasModel['id_cat'],product:UpdateCategoriasModel){
+    const url = `${this.Api_url}/${id}`
+    const response = this.httpClient;
+    return response.put(url, product);
   }
 
   getAll(): Observable<CategoriasModel[]> {

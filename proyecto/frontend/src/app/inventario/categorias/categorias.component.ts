@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriasModel, CreateCategoriasModel } from 'src/app/models/listar-categorias.model';
+import { CategoriasModel, CreateCategoriasModel, UpdateCategoriasModel } from 'src/app/models/listar-categorias.model';
 import { CategoriasService } from 'src/app/services/categorias.service';
 
 
@@ -11,14 +11,17 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 })
 export class CategoriasComponent implements OnInit {
   categoriasNuevo: CreateCategoriasModel = {
+    id_cat:0,
     nombre_cat: ''
   }
-  categoriasEdit: CategoriasModel = {
-    nombre_cat: '',
-    id_cat: 0
+  categoriasEdit: UpdateCategoriasModel = {
+    id_cat: 0,
+    nombre_cat: ''
   }
   update: boolean = false
   categorias: CategoriasModel[] = []
+  CategoriasModel: any;
+
 
   constructor (private categoriasService: CategoriasService, private router: Router){}
 
@@ -31,22 +34,29 @@ export class CategoriasComponent implements OnInit {
     }
   }
 
-  nuevaCategoria() {
+  nuevaCategoria(categorias: CreateCategoriasModel) {
+    console.log(categorias)
+    console.log('registro')
     const response = this.categoriasService
-      .store(this.categoriasNuevo)
+      .store(categorias)
       .subscribe((response)=>{
         console.log(response)
-        this.router.navigate(["inventario/listar"])
-      })
+      });
   }
-  updateCategoria() {
-    this.categoriasEdit.nombre_cat = this.categoriasNuevo.nombre_cat
+
+  print(){
+    console.log(this.categoriasEdit.nombre_cat);
+    const input = document.getElementById('categoriaNombre') as HTMLInputElement
+    console.log(input.value);
+  }
+  updateCategoria(categorias: UpdateCategoriasModel) {
+    console.log(categorias)
+    console.log('update')
     const response = this.categoriasService.
-    update(this.categoriasEdit,this.categoriasEdit.id_cat)
+    update(categorias.id_cat, categorias)
       .subscribe((response)=>{
         console.log(response)
-        this.router.navigate(["inventario/listar"])
-      })
+      });
   }
 }
 

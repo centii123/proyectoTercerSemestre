@@ -9,10 +9,10 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 })
 export class ListarCategoriasComponent {
 
+  categorias: CategoriasModel[] = [];
     ngOnInit(): void {
       this.getCat()
     }
-    categorias: CategoriasModel[] = []
     constructor(private categoriasService: CategoriasService){
 
    }

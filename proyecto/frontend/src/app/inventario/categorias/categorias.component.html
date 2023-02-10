@@ -8,9 +8,17 @@
         <h2>Registro de Categorias</h2>
       </div><br>
       <form action="" class="formulario">
-        <input type="text" [(ngModel)]="categoriasNuevo.nombre_cat" class="input" placeholder="Nombre de la Categoria">
+        <input type="text" 
+        name="categoriaNombre"
+        [(ngModel)]="categoriasNuevo.nombre_cat" 
+        id="categoriaNombre"
+        (change)="print()"
+        class="input" 
+        placeholder="Nombre de la Categoria">
         <br><br>
-        <input (click)="nuevaCategoria()"  type="submit" id="boton" value="guardar" class="boton">
+        <button (click)="nuevaCategoria(categoriasNuevo)"
+        value="guardar" class="boton"
+        >Registrar</button>
       </form>
     </div>
 
@@ -21,12 +29,18 @@
   <div class="contenedor2">
     <div class="elemento1">
       <div class="titulos">
-        <h2>Registro de Categorias</h2>
+        <h2>Actualizar de Categorias</h2>
       </div><br>
       <form action="" class="formulario">
-        <input type="text" [(ngModel)]="categoriasEdit.nombre_cat" class="input" placeholder="Nombre de la Categoria">
+        <input 
+        type="text" 
+        name="categoriaNombre"
+        [(ngModel)]="categoriasEdit.nombre_cat" class="input" 
+        id="categoriaNombre"
+        (change)="print()"
+        placeholder="">
         <br><br>
-        <input (click)="updateCategoria()"  type="submit" id="boton" value="guardar" class="boton">
+        <button (click)="updateCategoria(categoriasEdit)"  type="submit" id="boton" value="guardar" class="boton">Actualizar</button>
       </form>
     </div>
 

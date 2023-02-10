@@ -26,11 +26,12 @@ export class CategoriasComponent implements OnInit {
   constructor (private categoriasService: CategoriasService, private router: Router){}
 
   ngOnInit(): void {
+    
+    
     if (history.state.id_cat) {
       this.update = true
       delete history.state.navigationId
-      console.log(history.state)
-      this.updateCategoria= history.state
+      this.categoriasEdit= history.state
     }
   }
 
@@ -57,6 +58,13 @@ export class CategoriasComponent implements OnInit {
       .subscribe((response)=>{
         console.log(response)
       });
+  }
+
+  deleteCat(id:number){
+    console.log(id)
+    const response = this.categoriasService.delete(id).subscribe((response) => {
+      this.categorias =this.categorias.filter(categorias => categorias.id_cat != id)
+    });
   }
 }
 

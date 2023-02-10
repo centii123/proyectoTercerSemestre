@@ -26,4 +26,18 @@ export class CategoriaService {
     return response 
    }
 
+   delete(id:number): Observable <any> {
+    const url = `${this.Api_url}/${id}`;
+    const Response = this.httpClient.delete<any>(url);
+    return Response;
+  }
+
+   cateUpdate(nuevo: CategoriaModel,id:number): Observable<CategoriaModel>{
+    const url = `${this.Api_url}/${id}`;
+    const response = this.httpClient.put<CategoriaModel> (url,nuevo);
+    return response;
+
+  }
+   
+
 }

@@ -22,4 +22,13 @@ export class ListarCategoriaComponent implements OnInit{
 
 }
 
+deleteCat(id:number){
+  console.log(id)
+  const response = this.categoriaService.delete(id).subscribe((response) => {
+    this.categorias =this.categorias.filter(product => product.id_cat != id)
+  });
+}
+
+
+
 }

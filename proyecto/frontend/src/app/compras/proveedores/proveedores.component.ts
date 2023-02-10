@@ -12,17 +12,26 @@ export class ProveedoresComponent implements OnInit {
   ngOnInit(): void {
     this.listarP()
   }
+  proveedores : proveedorModel[]=[]
   constructor (private proveedorService: ProveedoresService ){
 
   }
   //listar proveedores
 
-  listarP(){
+  async listarP(){
     const response = this.proveedorService.getAll().subscribe(response=>{  
-      this.proveedores=response
+      this.proveedores=response;
       console.log(this.proveedores)})
   }
-  proveedores : proveedorModel[]=[]
+
+
+  deleteProv(id:number){
+    console.log(id)
+    const response = this.proveedorService.delete(id).subscribe((response) => {
+      this.proveedores =this.proveedores.filter(product => product.id_prov != id)
+    });
+  }
+
 }
 
 

@@ -10,6 +10,9 @@ import { createproveedorModel, proveedorModel } from '../models/proveedores.mode
   providedIn: 'root'
 })
 export class ProveedoresService {
+  destroy(id: number) {
+    throw new Error('Method not implemented.');
+  }
   readonly Api_url: string = 'http://localhost:3000/proveedores';
   constructor(private httpClient : HttpClient) {
     
@@ -27,4 +30,11 @@ export class ProveedoresService {
     const response = this.httpClient.post<createproveedorModel>(url, proveedor)
     return response 
    }
+
+   //eliminar proveedores//
+   delete(id:number): Observable <any> {
+    const url = `${this.Api_url}/${id}`;
+    const Response = this.httpClient.delete<any>(url);
+    return Response
+}
 }

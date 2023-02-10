@@ -1,5 +1,6 @@
 export interface CategoriaModel {
-    id_cat: Number,
+    id_cat: number,
     especializacion: string
     
 }
+

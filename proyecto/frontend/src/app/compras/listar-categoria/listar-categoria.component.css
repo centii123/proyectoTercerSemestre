@@ -96,3 +96,10 @@ h2 {
     border-radius: 7px;
     border: none;
 }
+
+.but {
+    border-radius: 7px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(196, 23, 52);
+    color: #ffffff;
+  }

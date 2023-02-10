@@ -20,15 +20,15 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Especialización</th>
+          <th scope="col">Eliminar</th>
        
-
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let categoria of categorias">
           <th  scope="row">{{categoria.id_cat}}</th>
           <td>{{categoria.especializacion}}</td>
-          
+          <td> <button (click)="deleteCat(categoria.id_cat)" class="but">Eliminar</button> </td>
         </tr>
         
       </tbody>

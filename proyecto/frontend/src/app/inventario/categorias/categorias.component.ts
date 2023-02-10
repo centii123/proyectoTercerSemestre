@@ -48,5 +48,12 @@ export class CategoriasComponent implements OnInit {
         this.router.navigate(["inventario/listar"])
       })
   }
+
+  deleteCat(id:number){
+    console.log(id)
+    const response = this.categoriasService.delete(id).subscribe((response) => {
+      this.categorias =this.categorias.filter(categorias => categorias.id_cat != id)
+    });
+  }
 }
 

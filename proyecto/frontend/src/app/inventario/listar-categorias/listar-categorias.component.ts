@@ -19,6 +19,7 @@ export class ListarCategoriasComponent {
    async getCat(){
     const response = this.categoriasService.getAll().subscribe((response) => {
       this.categorias = response;
+      console.log(this.categorias)
     });
    }
     deleteCat(id:number){

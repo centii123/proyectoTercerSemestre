@@ -23,6 +23,8 @@ export class CategoriasComponent implements OnInit {
   constructor (private categoriasService: CategoriasService, private router: Router){}
 
   ngOnInit(): void {
+    console.log(history.state);
+    
     if (history.state.id_cat) {
       this.update = true
       delete history.state.navigationId

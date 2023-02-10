@@ -11,7 +11,7 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 })
 export class CategoriasComponent implements OnInit {
   categoriasNuevo: CreateCategoriasModel = {
-    id_cat:0,
+    id_cat: 0,
     nombre_cat: ''
   }
   categoriasEdit: UpdateCategoriasModel = {
@@ -26,8 +26,8 @@ export class CategoriasComponent implements OnInit {
   constructor (private categoriasService: CategoriasService, private router: Router){}
 
   ngOnInit(): void {
-    
-    
+
+
     if (history.state.id_cat) {
       this.update = true
       delete history.state.navigationId

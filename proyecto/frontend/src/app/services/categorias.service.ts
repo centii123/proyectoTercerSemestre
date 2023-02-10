@@ -18,17 +18,10 @@ export class CategoriasService {
     return response;
   }
 
-<<<<<<< HEAD
-  update(id: CategoriasModel['id_cat'],product:UpdateCategoriasModel){
-    const url = `${this.Api_url}/${id}`
-    const response = this.httpClient;
-    return response.put(url, product);
-=======
   update(categorias: CategoriasModel,id: number):Observable<CategoriasModel>{
     const url = `${this.Api_url}/${id}`;
     const response = this.httpClient.put<CategoriasModel>(url, categorias);
     return response;
->>>>>>> 307baa0ab9dc806800101fff836807df2d39392a
   }
 
   getAll(): Observable<CategoriasModel[]> {

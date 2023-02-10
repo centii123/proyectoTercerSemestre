@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
     } else if(this.rol === 2) {
       this.router.navigate(['/inventario/listar'])
     }else if(this.rol === 3){
-      this.router.navigate(['/compras/'])
+      this.router.navigate(['/compras/proveedores'])
     }else {
-      this.router.navigate(['/login/proveedores'])
+      this.router.navigate(['/login'])
     }
   }
 }

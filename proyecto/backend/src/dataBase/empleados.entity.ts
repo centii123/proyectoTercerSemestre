@@ -39,6 +39,6 @@ export class empleados {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  @JoinColumn({ name: ' id_rol' })
+  @JoinColumn({ name: 'id_rol' })
   id_rol: rol[];
 }

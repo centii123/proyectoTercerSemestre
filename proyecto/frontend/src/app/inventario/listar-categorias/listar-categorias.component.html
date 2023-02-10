@@ -38,7 +38,7 @@
         <tr *ngFor="let categoria of categorias| categoryList:filterName">
           <td  scope="row">{{categoria.id_cat}}</td>
           <td>{{categoria.nombre_cat}}</td>
-          <td> <button [routerLink]="['../categorias']" [state]="categoria" class="butt">Actualizar</button> </td>
+          <td> <button [routerLink]="['../categorias']" [state]="categoria" class="butt" >Actualizar</button> </td>
           <td> <button (click)="deleteCat(categoria.id_cat)" class="but">Eliminar</button> </td>
         </tr>
 

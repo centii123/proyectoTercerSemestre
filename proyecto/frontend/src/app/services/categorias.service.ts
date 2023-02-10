@@ -20,7 +20,7 @@ export class CategoriasService {
 
   update(categorias: CategoriasModel,id: number):Observable<CategoriasModel>{
     const url = `${this.Api_url}/${id}`;
-    const response = this.httpClient.post<CategoriasModel>(url, categorias);
+    const response = this.httpClient.put<CategoriasModel>(url, categorias);
     return response;
   }
 

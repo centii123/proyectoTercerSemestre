@@ -23,13 +23,12 @@ export class CategoriasComponent implements OnInit {
   constructor (private categoriasService: CategoriasService, private router: Router){}
 
   ngOnInit(): void {
-    console.log(history.state);
+    
     
     if (history.state.id_cat) {
       this.update = true
       delete history.state.navigationId
-      console.log(history.state)
-      this.updateCategoria= history.state
+      this.categoriasEdit= history.state
     }
   }
 
@@ -38,16 +37,14 @@ export class CategoriasComponent implements OnInit {
       .store(this.categoriasNuevo)
       .subscribe((response)=>{
         console.log(response)
-        this.router.navigate(["inventario/listar"])
+        this.router.navigate(["inventario/categorias_l"])
       })
   }
   updateCategoria() {
-    this.categoriasEdit.nombre_cat = this.categoriasNuevo.nombre_cat
     const response = this.categoriasService.
     update(this.categoriasEdit,this.categoriasEdit.id_cat)
       .subscribe((response)=>{
-        console.log(response)
-        this.router.navigate(["inventario/listar"])
+        this.router.navigate(["inventario/categorias_l"])
       })
   }
 

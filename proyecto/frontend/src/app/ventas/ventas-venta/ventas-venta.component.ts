@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductosModel } from '../models/productos.entity';
 import { buscarProductos } from '../services/productos.services';
+import { StockService } from '../services/stock.service';
 
 @Component({
   selector: 'app-ventas-venta',
@@ -29,7 +30,7 @@ export class VentasVentaComponent {
   suma:number=0
   tot=0
   private objeto: ProductosModel | null=null;
-  constructor(private http:buscarProductos, private router:Router, private facturaCreate:FacturaServices){
+  constructor(private http:buscarProductos, private router:Router, private facturaCreate:FacturaServices, private updateStock:StockService){
   }
   
   ngOnInit():void{
@@ -229,6 +230,8 @@ export class VentasVentaComponent {
             
             
           })
+
+          this.updateStock.actualizarStock(this.facturaProductos)
         }
 
         cancelado = '';
